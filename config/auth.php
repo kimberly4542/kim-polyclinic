@@ -290,6 +290,7 @@ return [
 				'provider' => 'subscribers',
 			],
 
+
 		// --------------------  Secretary --------------------  
 		'secretary'  => [
 			'driver'  => 'session',
@@ -567,6 +568,7 @@ return [
 		    'model'  => App\Models\Secretary_Portal\SecondaryUser::class,
 		    // 'table' => 'secondary_user',
 		],
+
 
 	],
 

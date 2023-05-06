@@ -28,8 +28,8 @@ class MedicalDataController extends Controller
 
         }
 
-        if(strlen($request->address) > 0) {
-            $results->where('patient.address1', $request->address);
+        if(strlen($request->location) > 0) {
+            $results->where('patient.address1', $request->location);
         }
 
         if(strlen($request->gender) > 0) {

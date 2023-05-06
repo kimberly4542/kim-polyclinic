@@ -231,6 +231,27 @@ Route::get('/doctor_profile_copy', function () {
 	return view ('doctor_portal.profile.doctor_profile_copy');
 });
 
+// ----------------------------------- City Admin Portal Routes ---------------------------------------- //
+
+Route::get('/cityadmin', function () { 
+	return view ('cityadmin.login2');
+});
+
+Route::get('/cityadmin/home', function () { 
+	return view ('cityadmin.home.index');
+});
+
+Route::get('/cityadmin/patient', function () { 
+	return view ('cityadmin.patient.patient');
+});
+
+Route::get('/cityadmin/dash', function () { 
+	return view ('cityadmin.dash');
+});
+
+Route::get('/cityadmin/reports', function () { 
+	return view ('cityadmin.reports');
+});
 // ----------------------------------- Secretary Portal Routes ---------------------------------------- //
 
 Route::get('/secHome/{subscriber_id}', 'Secretary_Portal\HomeController@home')->middleware('auth:secretary');

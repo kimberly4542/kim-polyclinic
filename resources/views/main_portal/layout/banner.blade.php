@@ -33,6 +33,7 @@
 								<li class=""><a href="{{ url('registration') }}">Register</a></li>
 								<li class=""><a href="{{ url('session/login') }}">Login Subscriber</a></li>
 								<li class=""><a href="{{ url('sec_session/login') }}">Login Secretary</a></li>
+								<li class=""><a href="{{ url('cityadmin') }}">City Admin</a></li>
 							</ul>
 							
 						</div>
