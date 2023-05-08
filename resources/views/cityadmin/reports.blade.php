@@ -57,14 +57,18 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="dash">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="reports" id="reports">Reports</a>
+            <a class="nav-link" href="dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="patient">Patient</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="analytics">Analytics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reports" id="reports">Reports</a>
+          </li>
+          
         </ul>
         <!-- Left links -->
       </div>
@@ -85,105 +89,134 @@
   </nav>
   <br><br><br>
 
-<div class="card2 col-lg-11">
+    <br><br>
+    <div class="card2 col-lg-11">
+
+      
+      <div class="row">
+          <div class="col-md-2">
+            <select name="cases" id="cases" class="form-control">
+              <option value selected="selected">Cases</option>
+              <option value="Diagnosis">Dengue</option>
+              <option value="Diagnosis">Diabetes</option>
+              <option value="Diagnosis">Malaria</option>
+            </select>
+          </div>
+          <div class="col-xs-2">
+            <input type="text" placeholder="Age" class="form-control">
+          </div>
+          <div class="col-md-2">
+            <select name="region" id="region" class="form-control">
+              <option value selected="selected">Location</option>
+              <option value="Region 1">Region 1</option>
+              <option value="Region 2">Region 2</option>
+              <option value="Region 3">Region 3</option>
+              <option value="Region 4">Region 4</option>
+              <option value="Region 5">Region 5</option>
+              <option value="Region 6">Region 6</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select name="gender" id="gender" class="form-control">
+              <option value selected="selected">Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            <input type="search" placeholder="Search" class="form-control">
+          </div>
+          <div class="col-xs-7">
+            <button class="btn btn-warning form-control" style="">Print</button>
+          </div>
+
+      </div>
 
 
- <br><br><br><br><br>   
-<div class="card col-lg-11">
-      <div class="col" style="margin-top: -8px">
-                                <div class="form-outline">
-                                  <label class="form-label" for="form3Example1">Gender</label> 
-                                  <select class="form-control show-tick" name="gender" tabindex="-98">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                  </select>
-    </div>
-  <div class="container-fluid">
+    <br><br>
+    <div class="card col-lg-12">
+          
+      <div class="container-fluid">
 
-  
-
-
-
-
-    <section class="hk-sec-wrapper">
-                            <h5 class="hk-sec-title">Disease Record</h5>
-                            <p class="mb-40"><small>Apply filters to generate report. </small></p>
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="table-wrap">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Location</th>
-                                                        <th>Gender</th>
-                                                        <th>Age</th>
-                                                        <th>Cases</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Region 1</td>
-                                                        <td>Female</td>
-                                                        <td>15</td>
-                                                        <td>Dengue</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Region 2</td>
-                                                        <td>Female</td>
-                                                        <td>15</td>
-                                                        <td>Dengue</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Region 3</td>
-                                                        <td>Female</td>
-                                                        <td>15</td>
-                                                        <td>Dengue </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">4</th>
-                                                        <td>Region 4</td>
-                                                        <td>Female</td>
-                                                        <td>15</td>
-                                                        <td>Dengue </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">5</th>
-                                                        <td>Region 5</td>
-                                                        <td>Female</td>
-                                                        <td>15</td>
-                                                        <td>Dengue </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">6</th>
-                                                        <td>Region 6</td>
-                                                        <td>Female</td>
-                                                        <td>15</td>
-                                                        <td>Dengue</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+        <section class="hk-sec-wrapper">
+                                <h5 class="hk-sec-title">Disease Record</h5>
+                                <p class="mb-40"><small>Apply filters to generate report. </small></p>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div class="table-wrap">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Cases</th>
+                                                            <th>Age</th>
+                                                            <th>Location</th>
+                                                            <th>Gender</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Dengue</td>
+                                                            <td>15</td>
+                                                            <td>Region 1</td>
+                                                            <td>Female</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Dengue</td>
+                                                            <td>15</td>
+                                                            <td>Region 2</td>
+                                                            <td>Female</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Dengue </td>
+                                                            <td>15</td>
+                                                            <td>Region 3</td>
+                                                            <td>Female</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">4</th>
+                                                            <td>Dengue</td>
+                                                            <td>15</td>
+                                                            <td>Region 4</td>
+                                                            <td>Female</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">5</th>
+                                                            <td>Dengue </td>
+                                                            <td>15</td>
+                                                            <td>Region 5</td>
+                                                            <td>Female</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">6</th>
+                                                            <td>Dengue</td>
+                                                            <td>15</td>
+                                                            <td>Region 6</td>
+                                                            <td>Female</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
 
 
-  </div>
-</div>
-</div>
+      </div>
+    </div>
+    </div>
 
 
   
 
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-    <script src="{{ URL::asset('AdminSB/plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{ URL::asset('AdminSB/plugins/jquery/jquery.min.js') }}"></script>
 	<!-- Bootstrap Core Js -->
 	{{-- <script src="{{ URL::asset('AdminSB/plugins/bootstrap/js/bootstrap.js') }}"></script> --}}
 	<!-- Waves Effect Plugin Js -->

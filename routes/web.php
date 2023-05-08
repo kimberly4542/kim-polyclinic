@@ -245,12 +245,16 @@ Route::get('/cityadmin/patient', function () {
 	return view ('cityadmin.patient.patient');
 });
 
-Route::get('/cityadmin/dash', function () { 
+Route::get('/cityadmin/dashboard', function () { 
 	return view ('cityadmin.dash');
 });
 
 Route::get('/cityadmin/reports', function () { 
 	return view ('cityadmin.reports');
+});
+
+Route::get('/cityadmin/analytics', function () { 
+	return view ('cityadmin.stats');
 });
 // ----------------------------------- Secretary Portal Routes ---------------------------------------- //
 

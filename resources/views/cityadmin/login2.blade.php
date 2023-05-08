@@ -57,8 +57,8 @@
 <body class="login-page">
 	<div class="login-box">
 		<div class="logo">
-			<a href="{{ url('/') }}"><b>Polyclinic Management System</b></a>
-			<small>City Admin Portal</small>
+			<a href="{{ url('/') }}" ><b>Polyclinic Management System</b></a>
+			<small style="color: rgb(255, 189, 89);">City Admin Portal</small>
 		</div>
 		<div class="card">
 			<div class="body">
@@ -85,7 +85,7 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<center>
-								<button id="btn-log-in" class="btn bg-deep-orange waves-effect" type="submit"><a href="/cityadmin/home">City AdminLogin </a></button>
+								<button id="btn" class="btn" type="submit" style="background-color: rgb(255, 189, 89)"><a href="/cityadmin/dashboard" style="color: black ; padding: 130px;" >Login </a></button>
 								{{-- <a  href="{{ url('/') }}" id="btn-log-in" class="btn btn-primary waves-effect">Login</a> --}}
 							</center>
 						</div>

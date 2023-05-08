@@ -57,14 +57,18 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="dash" id="dash">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="reports">Reports</a>
+            <a class="nav-link" href="dashboard" id="dash">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="patient">Patient</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="analytics">Analytics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reports">Reports</a>
+          </li>
+          
         </ul>
         <!-- Left links -->
       </div>
@@ -83,6 +87,8 @@
     </div>
     <!-- Container wrapper -->
   </nav>
+
+
   <br><br><br>
 <div class="card2 col-lg-11">
   <div class="container-fluid">
