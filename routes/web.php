@@ -1,5 +1,6 @@
 <?php
 
+
 Route::get('/adminHome', 'Admin_Portal\HomeController@home')->name('adminHome');
 
 Route::group(['prefix' => 'admin_session'], function () {
@@ -256,6 +257,34 @@ Route::get('/cityadmin/reports', function () {
 Route::get('/cityadmin/analytics', function () { 
 	return view ('cityadmin.stats');
 });
+
+// Route::get('/diagnos', function () {
+//     $diagnos = DB::table('patient')->get()
+// 	->join('consultation', '');
+//     return response()->json($diagnos);
+// });
+
+Route::get('/diagnos', function () {
+    $diagnos = DB::table('patient')
+	 	->join('consultation', 'patient.patient_id', '=', 'consultation.patient_id')
+    	->join('diagnosis', 'consultation.consultation_id', '=', 'diagnosis.diag_id')
+        ->select('patient.gender', 'patient.birth_date' , 'patient.address1', 'diagnosis.diagnos as diagnos', )
+        ->get();
+
+	// 	array.from(diagnos).forEach($diagnos as $diagnos){
+    //     $dateOfBirth = Carbon::parse($diagnos->birth_date);
+    //     $age = $dateOfBirth->age;
+    //     $diagnos->age = $age;
+
+
+    // }
+    return response()->json($diagnos);
+
+});
+
+        
+
+
 // ----------------------------------- Secretary Portal Routes ---------------------------------------- //
 
 Route::get('/secHome/{subscriber_id}', 'Secretary_Portal\HomeController@home')->middleware('auth:secretary');

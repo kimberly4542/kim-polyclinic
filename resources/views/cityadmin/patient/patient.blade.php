@@ -12,6 +12,9 @@
 	<link rel="stylesheet" href="{{ URL::asset('AdminSB/favicon.ico') }}">
 	<!-- Bootstrap Core Css -->
 	{{-- <link href="{{ URL::asset('AdminSB/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet"> --}}
+
+  <!---Fontawesome----->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
     <!-- NEW ADDED -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -26,7 +29,7 @@
 
 <body class="container-fluid">
    
-<!-- Navbar -->
+<!---------------------------------------------- NAVBAR ----------------------------------------------->
   <nav class="navbar navbar-expand-xl navbar-light fixed-top bg-light">
     <!-- Container wrapper -->
     <div class="container-fluid">
@@ -84,6 +87,15 @@
               <a class="nav-link" href="">City Admin</a>
           </li>
         </ul>
+
+        <div class="btn-group user-helper-dropdown">
+          <i class="fa fa-chevron-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="">Log</a></li>
+            </ul>
+        </div>
+    </div>
+   
         <!-- Notifications -->
         {{-- <div class="dropdown">
           <a
@@ -151,14 +163,15 @@
     </div>
     <!-- Container wrapper -->
   </nav>
-  <!-- Navbar -->
+<!---------------------------------------------- NAVBAR END ----------------------------------------------->
 
+
+<!---------------------------------------------- FORM ----------------------------------------------->
   <section class="content">
         <div class="container-fluid"> 
             <div class="panel1">
                 <div class="card col-lg-10">
                     <form>
-                          <!-- 2 column grid layout with text inputs for the first and last names -->
                         
                     <div class="row mb-4">
                         <div class="col">
@@ -285,12 +298,14 @@
                       
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-dark btn-block mb-4" id="btn-submit">Add Patient</button>
+                    {{-- <button type="submit" class="btn btn-dark btn-block mb-4" id="btn-submit">Add Patient</button> --}}
+                    <button type="submit" class="btn btn-warning form-control" id="btn-submit">Add Patient</button>
                   </form>
                 </div>
             </div>
         </div>
-  </section>
+    </section>
+  <!---------------------------------------------- FORM END----------------------------------------------->
                       <!-- Dropdown -->
                         {{-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-bottom: 0px">
                               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="margin-bottom: 0px">

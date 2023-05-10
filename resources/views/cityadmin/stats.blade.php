@@ -12,6 +12,9 @@
 	<link rel="stylesheet" href="{{ URL::asset('AdminSB/favicon.ico') }}">
 	<!-- Bootstrap Core Css -->
 	{{-- <link href="{{ URL::asset('AdminSB/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet"> --}}
+
+  <!---Fontawesome----->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
     <!-- NEW ADDED -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -82,11 +85,58 @@
               <a class="nav-link" href="">City Admin</a>
           </li>
         </ul>
+
+        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+
       </div>
       <!-- Right elements -->
     </div>
     <!-- Container wrapper -->
   </nav>
+
+   <br><br><br><br><br>
+
+   <div class="card5 col-lg-11 col-md-11 col-sm-11 col-xs-11">
+      <div class="row">
+        
+        <label class="form-label" for="">From: </label>
+        <div class="col-md-3">
+          <div class="form-outline">
+              
+              <input type="date" class="date-picker form-control">
+          </div>
+        </div>
+
+        <label class="form-label" for="">To: </label>
+        <div class="col-md-3">
+          <div class="form-outline">
+              <input type="date" class="date-picker form-control">
+          </div>
+        </div>
+
+          <div class="col-md-2">
+            <select name="" id="" class="form-control" v-model="gender"  @change="index">
+									<option value="" selected>Sickness</option>
+									<option value="Dengue">Dengue</option>
+									<option value="Diabetes">Diabetes</option>
+                  <option value="Diabetes">Malaria</option>
+						</select>
+          </div>
+
+        {{-- <div class="col-md-3">
+          <div class="form-outline">
+              <button class="btn btn-warning form-control" style="">Analyze</button>
+          </div>
+        </div> --}}
+        
+        <div class="col-md-3">
+          
+          <div class="form-outline">
+            <button class="btn btn-warning form-control" style="">Analyze</button>
+          </div>
+        </div>
+      </div>
+  </div>
 
 
 

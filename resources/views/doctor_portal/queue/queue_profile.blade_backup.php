@@ -185,7 +185,7 @@
 										<a href="javascript:void(0);" class="list-group-item">Loren Mae Gumban</a>
 										<a href="javascript:void(0);" class="list-group-item">Apple Caponan</a>
 										<a href="javascript:void(0);" class="list-group-item">Richmon Monteadora</a>
-									</div> --}}
+									</div> --}}	
 								</div>
 							</div>	
 							<div class="card">
