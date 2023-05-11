@@ -1,5 +1,3 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/medical_report.js": "/js/medical_report.js"
+    "/dist/app.js": "/dist/app.js"
 }

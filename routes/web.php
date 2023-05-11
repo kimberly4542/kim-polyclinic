@@ -1,5 +1,9 @@
 <?php
 
+// use Illuminate\Routing\Route;
+
+use App\Http\Controllers\PatientController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/adminHome', 'Admin_Portal\HomeController@home')->name('adminHome');
 
@@ -77,16 +81,16 @@ Route::group(['prefix' => 'module_pricing_and_promo', 'middleware' => 'auth:admi
 	// Route::get('account_settings', 'Admin_Portal\ModulePricing\ModulePricingController@account_settings');
 });
 
-Route::group(['prefix'=>'module_controller'], function () {
+Route::group(['prefix' => 'module_controller'], function () {
 	Route::get('request_feature', 'Admin_Portal\ModuleController\ModuleControllerController@request_feature');
 });
 
-Route::group(['prefix'=>'notification'], function () {
+Route::group(['prefix' => 'notification'], function () {
 	Route::get('read_notification/{id}', 'Admin_Portal\Notification\notificationController@read_notification');
 });
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 // ----------------------------------- Subscription Portal Routes ---------------------------------------- //
@@ -113,7 +117,7 @@ Route::group(['prefix' => 'session'], function () {
 });
 
 //PROFILE
-Route::group(['prefix' => 'profile', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'profile', 'middleware' => 'auth:subscriber'], function () {
 	Route::get('doctor_profile', 'Doctor_Portal\Profile\DoctorProfileController@doctor_profile');
 	Route::put('doctor_profile/update', 'Doctor_Portal\Profile\DoctorProfileController@update');
 
@@ -134,8 +138,10 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth:subscriber'], functio
 	// Route::post('update_patient_basic_info', 'Doctor_Portal\Profile\PatientProfileController@update_patient_basic_info');
 
 	Route::get('patient_profile_history/{patient_id}', 'Doctor_Portal\Profile\PatientProfileHistoryController@patient_profile_history');
-	Route::get('patient_profile_billing_history/{patient_id}', 
-		'Doctor_Portal\Profile\PatientProfileBillingHistoryController@patient_profile_billing_history');
+	Route::get(
+		'patient_profile_billing_history/{patient_id}',
+		'Doctor_Portal\Profile\PatientProfileBillingHistoryController@patient_profile_billing_history'
+	);
 	// Route::get('patient_profile_schedule', 'Doctor_Portal\Profile\PatientProfileScheduleController@patient_profile_schedule');
 	Route::get('patient_profile_certificate/{patient_id}/{clinic_id}', 'Doctor_Portal\Profile\PatientProfileCertificateController@patient_profile_certificate');
 
@@ -146,7 +152,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth:subscriber'], functio
 });
 
 //QUEUE
-Route::group(['prefix' => 'queue', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'queue', 'middleware' => 'auth:subscriber'], function () {
 	Route::get('clinic_table', 'Doctor_Portal\Queue\QueueController@clinic_table');
 	Route::get('queue_patient/{clinic_id}', 'Doctor_Portal\Queue\QueueController@queue_patient');
 
@@ -162,21 +168,21 @@ Route::group(['prefix' => 'queue', 'middleware' => 'auth:subscriber'], function(
 });
 
 //SCHEDULE
-Route::group(['prefix' => 'schedule', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'schedule', 'middleware' => 'auth:subscriber'], function () {
 	// Route::get('schedule_patient_all_clinic', 'Doctor_Portal\Schedule\ScheduleAllClinicController@schedule_patient_all_clinic');
 	Route::get('schedule_patient_in_clinic', 'Doctor_Portal\Schedule\ScheduleInClinicController@schedule_patient_in_clinic');
 	Route::get('schedule_clinic_table', 'Doctor_Portal\Schedule\ScheduleAllClinicController@schedule_clinic_table');
 });
 
 //BOOKING
-Route::group(['prefix' => 'booking', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'booking', 'middleware' => 'auth:subscriber'], function () {
 	Route::get('booking_other_clinic', 'Doctor_Portal\Booking\BookingOtherClinicController@booking_other_clinic');
 	Route::get('booking_clinic_table', 'Doctor_Portal\Booking\BookingInClinicController@booking_in_clinic');
 	Route::post('booking_patient', 'Doctor_Portal\Booking\BookingInClinicController@booking_patient');
 });
 
 //BILLS
-Route::group(['prefix' => 'bills', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'bills', 'middleware' => 'auth:subscriber'], function () {
 	Route::get('bills_in_clinic', 'Doctor_Portal\Bills\BillsInClinicController@bills_in_clinic');
 	Route::get('bills_other_clinic', 'Doctor_Portal\Bills\BillsOtherClinicController@bills_other_clinic');
 	Route::get('select_clinic/{id}', 'Doctor_Portal\Bills\BillsOtherClinicController@select_clinic');
@@ -184,7 +190,7 @@ Route::group(['prefix' => 'bills', 'middleware' => 'auth:subscriber'], function(
 });
 
 //INVENTORY
-Route::group(['prefix' => 'inventory', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'inventory', 'middleware' => 'auth:subscriber'], function () {
 	Route::get('inventory_in_clinic', 'Doctor_Portal\Inventory\InventoryInClinicController@inventory_in_clinic');
 	Route::get('inventory_purchase_order', 'Doctor_Portal\Inventory\InventoryPurchaseOrderController@inventory_purchase_order');
 	Route::get('inventory_invoice', 'Doctor_Portal\Inventory\InventoryInvoiceController@inventory_invoice');
@@ -204,7 +210,7 @@ Route::group(['prefix' => 'inventory', 'middleware' => 'auth:subscriber'], funct
 });
 
 //MESSAGING
-Route::group(['prefix' => 'messaging', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'messaging', 'middleware' => 'auth:subscriber'], function () {
 	Route::get('compose_mail', 'Messaging\ComposeMailController@compose_mail');
 	Route::get('mail_inbox', 'Messaging\MailInboxController@mail_inbox');
 	Route::get('sent_mail', 'Messaging\SentMailController@sent_mail');
@@ -214,14 +220,14 @@ Route::group(['prefix' => 'messaging', 'middleware' => 'auth:subscriber'], funct
 });
 
 //REPORTS
-Route::group(['prefix' => 'reports', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'reports', 'middleware' => 'auth:subscriber'], function () {
 	Route::get('patients_report', 'Doctor_Portal\ManageReport\PatientReportController@patients_report');
 	Route::get('medicine_report', 'Doctor_Portal\ManageReport\MedicineReportController@medicine_report');
 	Route::get('financial_statement', 'Doctor_Portal\ManageReport\FinancialStatementReportController@financial_statement');
 });
 
 //ACCOUNTS
-Route::group(['prefix' => 'accounts', 'middleware' => 'auth:subscriber'], function() {
+Route::group(['prefix' => 'accounts', 'middleware' => 'auth:subscriber'], function () {
 	Route::get('accounts', 'Doctor_Portal\ManageAccounts\AccountController@accounts');
 	Route::post('add_account/store', 'Doctor_Portal\ManageAccounts\AccountController@store');
 	Route::put('sec_account/update', 'Doctor_Portal\ManageAccounts\AccountController@update');
@@ -229,17 +235,17 @@ Route::group(['prefix' => 'accounts', 'middleware' => 'auth:subscriber'], functi
 });
 
 Route::get('/doctor_profile_copy', function () {
-	return view ('doctor_portal.profile.doctor_profile_copy');
+	return view('doctor_portal.profile.doctor_profile_copy');
 });
 
 // ----------------------------------- City Admin Portal Routes ---------------------------------------- //
 
-Route::get('/cityadmin', function () { 
-	return view ('cityadmin.login2');
+Route::get('/cityadmin', function () {
+	return view('cityadmin.login2');
 });
 
-Route::get('/cityadmin/home', function () { 
-	return view ('cityadmin.home.index');
+Route::get('/cityadmin/home', function () {
+	return view('cityadmin.home.index');
 });
 
 // Route::get('/cityadmin/patient', function () { 
@@ -250,16 +256,16 @@ Route::get('/cityadmin/home', function () {
 // 	return view ('cityadmin.patient');
 // });
 
-Route::get('/cityadmin/dashboard', function () { 
-	return view ('cityadmin.dash');
+Route::get('/admin/dashboard', function () {
+	return view('cityadmin.dash');
 });
 
-Route::get('/cityadmin/reports', function () { 
-	return view ('cityadmin.reports');
+Route::get('/admin/reports', function () {
+	return view('cityadmin.reports');
 });
 
-Route::get('/cityadmin/analytics', function () { 
-	return view ('cityadmin.stats');
+Route::get('/admin/analytics', function () {
+	return view('cityadmin.stats');
 });
 
 // Route::get('/diagnos', function () {
@@ -269,33 +275,32 @@ Route::get('/cityadmin/analytics', function () {
 // });
 
 Route::get('/diagnos', function () {
-    $diagnos = DB::table('patient')
-	 	->join('consultation', 'patient.patient_id', '=', 'consultation.patient_id')
-    	->join('diagnosis', 'consultation.consultation_id', '=', 'diagnosis.diag_id')
-        ->select('patient.gender', 'patient.birth_date' , 'patient.address1', 'diagnosis.diagnos as diagnos', )
-        ->get();
+	$diagnos = DB::table('patient')
+		->join('consultation', 'patient.patient_id', '=', 'consultation.patient_id')
+		->join('diagnosis', 'consultation.consultation_id', '=', 'diagnosis.diag_id')
+		->select('patient.gender', 'patient.birth_date', 'patient.address1', 'diagnosis.diagnos as diagnos',)
+		->get();
 
 	// 	array.from(diagnos).forEach($diagnos as $diagnos){
-    //     $dateOfBirth = Carbon::parse($diagnos->birth_date);
-    //     $age = $dateOfBirth->age;
-    //     $diagnos->age = $age;
+	//     $dateOfBirth = Carbon::parse($diagnos->birth_date);
+	//     $age = $dateOfBirth->age;
+	//     $diagnos->age = $age;
 
 
-    // }
-    return response()->json($diagnos);
-
+	// }
+	return response()->json($diagnos);
 });
 // Route::post('/add-customer', 'CustomerController@addCustomer');
 
 // Route::post('/patient', 'PatientController@addPatient');
 
-Route::get('/cityadmin/patient', function () { 
-	return view ('cityadmin.patient');
-});
-	
+// Route::get('/cityadmin/patient', function () {
+// 	return view('cityadmin.patient');
+// });
+
 
 Route::view('patient', 'cityadmin.patient');
-Route::post('submit', 'test@save');
+// Route::post('submit', 'test@save');
 
 
 // ----------------------------------- Secretary Portal Routes ---------------------------------------- //
@@ -309,7 +314,7 @@ Route::group(['prefix' => 'sec_session'], function () {
 });
 
 //PROFILE
-Route::group(['prefix' => 'sec_profile', 'middleware' => 'auth:secretary'], function() {
+Route::group(['prefix' => 'sec_profile', 'middleware' => 'auth:secretary'], function () {
 	Route::get('patient_clinic', 'Secretary_Portal\Profile\PatientProfileController@patient_clinic');
 	Route::get('patient_profile/{clinic_id}', 'Secretary_Portal\Profile\PatientProfileController@patient_profile');
 	Route::post('update_patient_basic_info', 'Secretary_Portal\Profile\PatientProfileController@update_patient_basic_info');
@@ -317,8 +322,10 @@ Route::group(['prefix' => 'sec_profile', 'middleware' => 'auth:secretary'], func
 	Route::post('update_guardian_info', 'Secretary_Portal\Profile\PatientProfileController@update_guardian_info');
 
 	Route::get('patient_profile_history/{patient_id}', 'Secretary_Portal\Profile\PatientProfileHistoryController@patient_profile_history');
-	Route::get('patient_profile_billing_history/{patient_id}', 
-		'Secretary_Portal\Profile\PatientProfileBillingHistoryController@patient_profile_billing_history');
+	Route::get(
+		'patient_profile_billing_history/{patient_id}',
+		'Secretary_Portal\Profile\PatientProfileBillingHistoryController@patient_profile_billing_history'
+	);
 	// Route::get('patient_profile_schedule', 'Secretary_Portal\Profile\PatientProfileScheduleController@patient_profile_schedule');
 	Route::get('patient_profile_certificate/{patient_id}/{clinic_id}', 'Secretary_Portal\Profile\PatientProfileCertificateController@patient_profile_certificate');
 
@@ -329,7 +336,7 @@ Route::group(['prefix' => 'sec_profile', 'middleware' => 'auth:secretary'], func
 });
 
 //QUEUE
-Route::group(['prefix' => 'sec_queue', 'middleware' => 'auth:secretary'], function() {
+Route::group(['prefix' => 'sec_queue', 'middleware' => 'auth:secretary'], function () {
 	Route::get('clinic_table', 'Secretary_Portal\Queue\QueueController@clinic_table');
 	Route::get('queue_patient/{clinic_id}', 'Secretary_Portal\Queue\QueueController@queue_patient');
 
@@ -345,20 +352,20 @@ Route::group(['prefix' => 'sec_queue', 'middleware' => 'auth:secretary'], functi
 });
 
 //SCHEDULE
-Route::group(['prefix' => 'sec_schedule', 'middleware' => 'auth:secretary'], function() {
+Route::group(['prefix' => 'sec_schedule', 'middleware' => 'auth:secretary'], function () {
 	// Route::get('schedule_patient_all_clinic', 'Secretary_Portal\Schedule\ScheduleAllClinicController@schedule_patient_all_clinic');
 	Route::get('schedule_patient_in_clinic', 'Secretary_Portal\Schedule\ScheduleInClinicController@schedule_patient_in_clinic');
 	Route::get('schedule_clinic_table', 'Secretary_Portal\Schedule\ScheduleAllClinicController@schedule_clinic_table');
 });
 
-Route::group(['prefix' => 'sec_booking', 'middleware' => 'auth:secretary'], function() {
+Route::group(['prefix' => 'sec_booking', 'middleware' => 'auth:secretary'], function () {
 	Route::get('booking_other_clinic', 'Secretary_Portal\Booking\BookingOtherClinicController@booking_other_clinic');
 	Route::get('booking_clinic_table', 'Secretary_Portal\Booking\BookingInClinicController@booking_in_clinic');
 	Route::post('booking_patient', 'Secretary_Portal\Booking\BookingInClinicController@booking_patient');
 });
 
 //INVENTORY
-Route::group(['prefix' => 'sec_inventory', 'middleware' => 'auth:secretary'], function() {
+Route::group(['prefix' => 'sec_inventory', 'middleware' => 'auth:secretary'], function () {
 	Route::get('filter_clinic', 'Secretary_Portal\Inventory\FilterClinicController@filter_clinic');
 	Route::get('item/{clinic_id}', 'Secretary_Portal\Inventory\ItemController@Item');
 
@@ -371,14 +378,19 @@ Route::group(['prefix' => 'sec_inventory', 'middleware' => 'auth:secretary'], fu
 });
 
 //REPORTS
-Route::group(['prefix' => 'sec_reports', 'middleware' => 'auth:secretary'], function() {
+Route::group(['prefix' => 'sec_reports', 'middleware' => 'auth:secretary'], function () {
 	Route::get('patients_report', 'Secretary_Portal\ManageReport\PatientReportController@patients_report');
 	Route::get('medicine_report', 'Secretary_Portal\ManageReport\MedicineReportController@medicine_report');
 	Route::get('financial_statement', 'Secretary_Portal\ManageReport\FinancialStatementReportController@financial_statement');
-	Route::get('medical-data','Secretary_Portal\ManageReport\MedicalDataController@show');
+	Route::get('medical-data', 'Secretary_Portal\ManageReport\MedicalDataController@show');
 
 	Route::get('medical-data-index', 'Secretary_Portal\ManageReport\MedicalDataController@index');
 	Route::get('medical-data-diagnosis', 'Secretary_Portal\ManageReport\MedicalDataController@getDiagnosis');
 	Route::get('medical-data-locations', 'Secretary_Portal\ManageReport\MedicalDataController@getLocation');
 });
 
+// Route::get('/admin/patient', [PatientController::class, 'index'])->name('patient.index');
+
+Route::get('/admin/patients', 'PatientController@index')->name('patient.index');
+
+Route::resource('patients', 'PatientController');

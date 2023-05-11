@@ -128,3 +128,14 @@ body {
 .pull-right {
   float: right !important;
 }
+
+.container-fluid .admin {
+  margin-top: 6rem;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  background-color: #eceff2;
+  color: #000000;
+  transition: all;
+  border-radius: 5px;
+}
