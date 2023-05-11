@@ -69,7 +69,6 @@
 
 <body class="login-page">
     <div class="login-box">
-        <h1>Hellow Werld!</h1>
         <div class="logo">
             <a href="{{ url('/') }}"><b>Polyclinic Management System</b></a>
             <small style="color: rgb(255, 189, 89);">City Admin Portal</small>
