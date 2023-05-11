@@ -171,13 +171,14 @@
         <div class="container-fluid"> 
             <div class="panel1">
                 <div class="card col-lg-10">
-                    <form>
+                    <form action="/patient" method="POST">
+                      @csrf
                         
                     <div class="row mb-4">
                         <div class="col">
                         <div class="form-outline">
                           <label class="form-label" for="form3Example1">First name</label>
-                            <input type="text" id="form3Example1" class="form-control" />
+                            <input type="text" name="fname" id="form3Example1" class="form-control" />
                             
                         </div>
                         </div>

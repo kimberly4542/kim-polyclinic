@@ -9,10 +9,10 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
@@ -129,6 +129,7 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Inflector\\' => 19,
+            'Doctrine\\Deprecations\\' => 22,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
             'DeepCopy\\' => 9,
@@ -367,9 +368,13 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
         ),
+        'Doctrine\\Deprecations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations',
+        ),
         'Doctrine\\Common\\Lexer\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
+            0 => __DIR__ . '/..' . '/doctrine/lexer/src',
         ),
         'Doctrine\\Common\\Inflector\\' => 
         array (
@@ -436,6 +441,7 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
         'App\\Http\\Controllers\\Admin_Portal\\ModulePricing\\ModulePricingAndPromoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin_Portal/ModulePricing/ModulePricingAndPromoController.php',
         'App\\Http\\Controllers\\Admin_Portal\\ModulePricing\\ModulePricingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin_Portal/ModulePricing/ModulePricingController.php',
         'App\\Http\\Controllers\\Admin_Portal\\Notification\\notificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin_Portal/Notification/notificationController.php',
+        'App\\Http\\Controllers\\Admin_Portal\\Reports\\ReportsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin_Portal/Reports/ReportsController.php',
         'App\\Http\\Controllers\\Admin_Portal\\Settings\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin_Portal/Settings/SettingsController.php',
         'App\\Http\\Controllers\\Admin_Portal\\Subscription\\DeclinedSubscriberController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin_Portal/Subscription/DeclinedSubscriberController.php',
         'App\\Http\\Controllers\\Admin_Portal\\Subscription\\RenewalController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin_Portal/Subscription/RenewalController.php',
@@ -495,6 +501,7 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
         'App\\Http\\Controllers\\Secretary_Portal\\Inventory\\ItemController' => __DIR__ . '/../..' . '/app/Http/Controllers/Secretary_Portal/Inventory/ItemController.php',
         'App\\Http\\Controllers\\Secretary_Portal\\Inventory\\PurchaseOrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Secretary_Portal/Inventory/PurchaseOrderController.php',
         'App\\Http\\Controllers\\Secretary_Portal\\ManageReport\\FinancialStatementReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Secretary_Portal/ManageReport/FinancialStatementReportController.php',
+        'App\\Http\\Controllers\\Secretary_Portal\\ManageReport\\MedicalDataController' => __DIR__ . '/../..' . '/app/Http/Controllers/Secretary_Portal/ManageReport/MedicalDataController.php',
         'App\\Http\\Controllers\\Secretary_Portal\\ManageReport\\MedicineReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Secretary_Portal/ManageReport/MedicineReportController.php',
         'App\\Http\\Controllers\\Secretary_Portal\\ManageReport\\PatientReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Secretary_Portal/ManageReport/PatientReportController.php',
         'App\\Http\\Controllers\\Secretary_Portal\\Profile\\PatientProfileBillingHistoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Secretary_Portal/Profile/PatientProfileBillingHistoryController.php',
@@ -623,7 +630,10 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
         'DeepCopy\\TypeFilter\\TypeFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/TypeFilter.php',
         'DeepCopy\\TypeMatcher\\TypeMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeMatcher/TypeMatcher.php',
         'Doctrine\\Common\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector/Inflector.php',
-        'Doctrine\\Common\\Lexer\\AbstractLexer' => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer/AbstractLexer.php',
+        'Doctrine\\Common\\Lexer\\AbstractLexer' => __DIR__ . '/..' . '/doctrine/lexer/src/AbstractLexer.php',
+        'Doctrine\\Common\\Lexer\\Token' => __DIR__ . '/..' . '/doctrine/lexer/src/Token.php',
+        'Doctrine\\Deprecations\\Deprecation' => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations/Deprecation.php',
+        'Doctrine\\Deprecations\\PHPUnit\\VerifyDeprecations' => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations/PHPUnit/VerifyDeprecations.php',
         'Doctrine\\Inflector\\CachedWordInflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/CachedWordInflector.php',
         'Doctrine\\Inflector\\GenericLanguageInflectorFactory' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/GenericLanguageInflectorFactory.php',
         'Doctrine\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/Inflector.php',
@@ -2990,6 +3000,7 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
         'PhpParser\\Lexer\\TokenEmulator\\MatchTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/MatchTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\NullsafeTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/NullsafeTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\NumericLiteralSeparatorEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/NumericLiteralSeparatorEmulator.php',
+        'PhpParser\\Lexer\\TokenEmulator\\ReadonlyFunctionTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ReadonlyFunctionTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\ReadonlyTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ReadonlyTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\ReverseEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ReverseEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\TokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/TokenEmulator.php',
@@ -3219,6 +3230,7 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
         'Prophecy\\Call\\CallCenter' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Call/CallCenter.php',
         'Prophecy\\Comparator\\ClosureComparator' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Comparator/ClosureComparator.php',
         'Prophecy\\Comparator\\Factory' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Comparator/Factory.php',
+        'Prophecy\\Comparator\\FactoryProvider' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Comparator/FactoryProvider.php',
         'Prophecy\\Comparator\\ProphecyComparator' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Comparator/ProphecyComparator.php',
         'Prophecy\\Doubler\\CachedDoubler' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/CachedDoubler.php',
         'Prophecy\\Doubler\\ClassPatch\\ClassPatchInterface' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/ClassPatch/ClassPatchInterface.php',
@@ -3268,7 +3280,6 @@ class ComposerStaticInit74066997fb0767fa098b4b3935932e9e
         'Prophecy\\Exception\\Prophecy\\ProphecyException' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Exception/Prophecy/ProphecyException.php',
         'Prophecy\\PhpDocumentor\\ClassAndInterfaceTagRetriever' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/PhpDocumentor/ClassAndInterfaceTagRetriever.php',
         'Prophecy\\PhpDocumentor\\ClassTagRetriever' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/PhpDocumentor/ClassTagRetriever.php',
-        'Prophecy\\PhpDocumentor\\LegacyClassTagRetriever' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/PhpDocumentor/LegacyClassTagRetriever.php',
         'Prophecy\\PhpDocumentor\\MethodTagRetrieverInterface' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/PhpDocumentor/MethodTagRetrieverInterface.php',
         'Prophecy\\Prediction\\CallPrediction' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Prediction/CallPrediction.php',
         'Prophecy\\Prediction\\CallTimesPrediction' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Prediction/CallTimesPrediction.php',

@@ -178,7 +178,7 @@
           </div>
 
           <div class="col-sm-1">
-            <button class="btn btn-warning form-control" style="">Print</button>
+            <button onclick="window.print()" class="btn btn-warning form-control" id="print" name="print" style="">Print</button>
           </div>
 
       </div>
@@ -342,17 +342,6 @@
 	</div> --}}
   
 	</section>
-  <div class="row">
-    <div class="pagination">
-    <div class="col-sm-1">
-      <button class="btn btn-warning form-control" id="previous-page" style="">Back</button>
-    </div>
-
-    <div class="col-sm-1">
-      <button class="btn btn-warning form-control" id="next-page" style="">Next</button>
-    </div>
-  </div>
-  </div>
   
   <!---------------------------------------------- FILTERS END ----------------------------------------------->
 
@@ -364,25 +353,7 @@
 {{-- CUSTOM JS
 <script src="{{ URL::asset('AdminSB/js/pages/tables/jquery-datatable.js')}}"></script>  --}}
 
- {{-- <script>
-    let tableBody = document.querySelector("#data-table tbody");
 
-    fetch("/diagnos")
-      .then((response) => response.json())
-      .then((diagnos) => {
-        diagnos.forEach((item) => {
-          let row = document.createElement("tr");
-          row.innerHTML = `
-                    <td>${item.diagnos}</td>
-                    <td>${item.age}</td>
-                    <td>${item.address1}</td>
-                    <td>${item.gender}</td>
-                `;
-          tableBody.appendChild(row);
-        });
-      });
-
-  </script> --}}
 
 
 
@@ -394,8 +365,8 @@ let locDropdown = document.querySelector("#location");
 let searchInput = document.querySelector("#search");
 let searchAge = document.querySelector("#search_age");
 
-let pageSize = 5;
-let pageNumber = 1;
+// let pageSize = 5;
+// let pageNumber = 1;
 
 fetch("/diagnos")
   .then((response) => response.json())
@@ -449,71 +420,21 @@ fetch("/diagnos")
         );
       }
 
+      
       tableBody.innerHTML = "";
-      let startIndex = (pageNumber - 1) * pageSize;
-      let endIndex = startIndex + pageSize;
-      let pageEntries = filteredDiagnos.slice(startIndex, endIndex);
-      pageEntries.forEach((item) => {
+      filteredDiagnos.forEach((item) => {
         let row = document.createElement("tr");
         row.innerHTML = `
-                    <td>${item.diagnos}</td>
-                    <td>${calculateAge(item.birth_date)}</td>
-                    <td>${item.address1}</td>
-                    <td>${item.gender}</td>
-                `;
+          <td>${item.diagnos}</td>
+          <td>${calculateAge(item.birth_date)}</td>
+          <td>${item.address1}</td>
+          <td>${item.gender}</td>
+        `;
         tableBody.appendChild(row);
       });
-
-
-      // tableBody.innerHTML = "";
-      // filteredDiagnos.forEach((item) => {
-      //   let row = document.createElement("tr");
-      //   row.innerHTML = `
-      //     <td>${item.diagnos}</td>
-      //     <td>${calculateAge(item.birth_date)}</td>
-      //     <td>${item.address1}</td>
-      //     <td>${item.gender}</td>
-      //   `;
-      //   tableBody.appendChild(row);
-      // });
-    // }
-
-    //NEW CODE
-     // Pagination
-      let paginationDiv = document.querySelector("#pagination");
-      paginationDiv.innerHTML = "";
-      let totalPages = Math.ceil(filteredDiagnos.length / pageSize);
-      for (let i = 1; i <= totalPages; i++) {
-        let pageButton = document.createElement("button");
-        pageButton.innerHTML = i;
-        if (i === pageNumber) {
-          pageButton.disabled = true;
-        }
-        pageButton.addEventListener("click", (event) => {
-          pageNumber = i;
-          filterData();
-        });
-        paginationDiv.appendChild(pageButton);
-      }
-      //NEW CODE
-      // Next Button
-      let nextButton = document.querySelector("#next-button");
-      if (pageNumber === totalPages) {
-        nextButton.disabled = true;
-      } else {
-        nextButton.disabled = false;
-        nextButton.addEventListener("click", (event) => {
-          pageNumber++;
-          filterData();
-        });
-      }
     }
-    //NEW CODE
-    // }
 
-    filterData();
-  });
-    //NEW CODE
+
 
     function calculateAge(dateString) {
       var birthDate = new Date(dateString);
@@ -526,199 +447,17 @@ fetch("/diagnos")
     }
     
     // OLD CODE
-    //  filterData();
+     filterData();
+  });
 
-    // let nextPageButton = document.querySelector("#next-page");
-    // let previousPageButton = document.querySelector("#previous-page");
-
-    // nextPageButton.addEventListener("click", (event) => {
-    //   offset += limit;
-    //   page += 1;
-    //   fetch(`/diagnos?limit=${limit}&offset=${offset}`)
-    //     .then((response) => response.json())
-    //     .then((diagnos) => {
-    //       filterData();
-    //     });
-    // });
-
-    // previousPageButton.addEventListener("click", (event) => {
-    //   offset -= limit;
-    //   page -= 1;
-    //   fetch(`/diagnos?limit=${limit}&offset=${offset}`)
-    //     .then((response) => response.json())
-    //     .then((diagnos) => {
-    //       filterData();
-    //     });
-    // });
-  // });
-  
+     
+      window.onload = function() {
+          var print = document.querySelector('button');
+          print.style.display = 'block';
+      };
 
 
-
-    //   tableBody.innerHTML = "";
-    //   filteredDiagnos.forEach((item) => {
-    //     function calculateAge(dateString) {
-    //       var birthDate = new Date(dateString);
-    //       var now = new Date();
-    //       var age = now.getFullYear() - birthDate.getFullYear();
-    //       if (
-    //         now.getMonth() < birthDate.getMonth() ||
-    //         (now.getMonth() == birthDate.getMonth() &&
-    //           now.getDate() < birthDate.getDate())
-    //       ) {
-    //         age--;
-    //       }
-    //       return age;
-    //     }
-
-    //     var age = calculateAge(item.birth_date);
-    //     let row = document.createElement("tr");
-    //     row.innerHTML = `
-    //                 <td>${item.diagnos}</td>
-    //                 <td>${age}</td>
-    //                 <td>${item.address1}</td>
-    //                 <td>${item.gender}</td>
-    //             `;
-    //     tableBody.appendChild(row);
-    //   });
-    // }
-
-    // Initial data population
-   
-
-
-
-
-//   let tableBody = document.querySelector("#data-table tbody");
-//   let filterDropdown = document.querySelector("#gender");
-//   let filterDropdown2 = document.querySelector("#gender");
-
-// fetch("/diagnos")
-//   .then((response) => response.json())
-//   .then((diagnos) => {
-//     filterDropdown.addEventListener("change", (event) => {
-//       let filteredDiagnos = diagnos;
-//       if (event.target.value !== "") {
-//         filteredDiagnos = diagnos.filter(
-//           (item) => item.gender === event.target.value
-//         );
-//       }
-//       tableBody.innerHTML = "";
-//       filteredDiagnos.forEach((item) => {
-//         function calculateAge(dateString) {
-//           var birthDate = new Date(dateString);
-//           var now = new Date();
-//           var age = now.getFullYear() - birthDate.getFullYear();
-//           if (
-//             now.getMonth() < birthDate.getMonth() ||
-//             (now.getMonth() == birthDate.getMonth() &&
-//               now.getDate() < birthDate.getDate())
-//           ) {
-//             age--;
-//           }
-//           return age;
-//         }
-
-//         var age = calculateAge(item.birth_date);
-//         let row = document.createElement("tr");
-//         row.innerHTML = `
-//                     <td>${item.diagnos}</td>
-//                     <td>${age}</td>
-//                     <td>${item.address1}</td>
-//                     <td>${item.gender}</td>
-//                 `;
-//         tableBody.appendChild(row);
-//       });
-//     });
-
-//     // Initial data population
-//     diagnos.forEach((item) => {
-//       function calculateAge(dateString) {
-//         var birthDate = new Date(dateString);
-//         var now = new Date();
-//         var age = now.getFullYear() - birthDate.getFullYear();
-//         if (
-//           now.getMonth() < birthDate.getMonth() ||
-//           (now.getMonth() == birthDate.getMonth() &&
-//             now.getDate() < birthDate.getDate())
-//         ) {
-//           age--;
-//         }
-//         return age;
-//       }
-
-//       var age = calculateAge(item.birth_date);
-//       let row = document.createElement("tr");
-//       row.innerHTML = `
-//                 <td>${item.diagnos}</td>
-//                 <td>${age}</td>
-//                 <td>${item.address1}</td>
-//                 <td>${item.gender}</td>
-//             `;
-//       tableBody.appendChild(row);
-//     });
-//   });
-
-
-
-
-
-    // let tableBody = document.querySelector("#data-table tbody");
-    // let filterDropdown = document.querySelector("#filter-dropdown");
-
-    // fetch("/diagnos")
-    //   .then((response) => response.json())
-    //   .then((diagnos) => {
-    //     diagnos.forEach((item) => {
-          
-
-    //       function calculateAge(dateString) {
-    //       var birthDate = new Date(dateString);
-    //       var now = new Date();
-    //       var age = now.getFullYear() - birthDate.getFullYear();
-    //       if (now.getMonth() < birthDate.getMonth() || (now.getMonth() == birthDate.getMonth() && now.getDate() < birthDate.getDate())) {
-    //         age--;
-    //       }
-    //       return age;
-    //     }
-
-    //       var age = calculateAge(item.birth_date);
-    //       let row = document.createElement("tr");
-    //       row.innerHTML = `
-    //                 <td>${item.diagnos}</td>
-    //                 <td>${age}</td>
-    //                 <td>${item.address1}</td>
-    //                 <td>${item.gender}</td>
-    //             `;
-    //       tableBody.appendChild(row);
-
-    //     });
-    //   });
-
-      
 </script>
-    {{-- // function calculateAge(dateString) {
-    //   var birthDate = new Date(dateString);
-    //   var now = new Date();
-    //   var age = now.getFullYear() - birthDate.getFullYear();
-    //   if (now.getMonth() < birthDate.getMonth() || (now.getMonth() == birthDate.getMonth() && now.getDate() < birthDate.getDate())) {
-    //     age--;
-    //   }
-    //   return age;
-    // }
-    // $(document).ready(function() {
-    //     $.ajax({
-    //         url: "/users",
-    //         type: "GET",
-    //         dataType: "json",
-    //         success: function(data) {
-    //           data.forEach(function(item) {
-    //             var age = calculateAge(item.date_of_birth);
-    //             var row = "<tr><td>" + item.diagnos + "</td><td>" + item.birth_date + "</td><td>" + age + "</td></tr>";
-    //             $("#data-table").append(row);
-    //     }); --}}
-
-
 
 
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>

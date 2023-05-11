@@ -242,9 +242,13 @@ Route::get('/cityadmin/home', function () {
 	return view ('cityadmin.home.index');
 });
 
-Route::get('/cityadmin/patient', function () { 
-	return view ('cityadmin.patient.patient');
-});
+// Route::get('/cityadmin/patient', function () { 
+// 	return view ('cityadmin.patient.patient');
+// });
+
+// Route::get('/cityadmin/patient', function () { 
+// 	return view ('cityadmin.patient');
+// });
 
 Route::get('/cityadmin/dashboard', function () { 
 	return view ('cityadmin.dash');
@@ -281,8 +285,17 @@ Route::get('/diagnos', function () {
     return response()->json($diagnos);
 
 });
+// Route::post('/add-customer', 'CustomerController@addCustomer');
 
-        
+// Route::post('/patient', 'PatientController@addPatient');
+
+Route::get('/cityadmin/patient', function () { 
+	return view ('cityadmin.patient');
+});
+	
+
+Route::view('patient', 'cityadmin.patient');
+Route::post('submit', 'test@save');
 
 
 // ----------------------------------- Secretary Portal Routes ---------------------------------------- //
