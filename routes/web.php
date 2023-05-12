@@ -240,21 +240,9 @@ Route::get('/doctor_profile_copy', function () {
 
 // ----------------------------------- City Admin Portal Routes ---------------------------------------- //
 
-Route::get('/cityadmin', function () {
+Route::get('/admin', function () {
 	return view('cityadmin.login2');
 });
-
-Route::get('/cityadmin/home', function () {
-	return view('cityadmin.home.index');
-});
-
-// Route::get('/cityadmin/patient', function () { 
-// 	return view ('cityadmin.patient.patient');
-// });
-
-// Route::get('/cityadmin/patient', function () { 
-// 	return view ('cityadmin.patient');
-// });
 
 Route::get('/admin/dashboard', function () {
 	return view('cityadmin.dash');
@@ -268,11 +256,6 @@ Route::get('/admin/analytics', function () {
 	return view('cityadmin.stats');
 });
 
-// Route::get('/diagnos', function () {
-//     $diagnos = DB::table('patient')->get()
-// 	->join('consultation', '');
-//     return response()->json($diagnos);
-// });
 
 Route::get('/diagnos', function () {
 	$diagnos = DB::table('patient')
@@ -281,13 +264,6 @@ Route::get('/diagnos', function () {
 		->select('patient.gender', 'patient.birth_date', 'patient.address1', 'diagnosis.diagnos as diagnos',)
 		->get();
 
-	// 	array.from(diagnos).forEach($diagnos as $diagnos){
-	//     $dateOfBirth = Carbon::parse($diagnos->birth_date);
-	//     $age = $dateOfBirth->age;
-	//     $diagnos->age = $age;
-
-
-	// }
 	return response()->json($diagnos);
 });
 // Route::post('/add-customer', 'CustomerController@addCustomer');
@@ -299,7 +275,7 @@ Route::get('/diagnos', function () {
 // });
 
 
-Route::view('patient', 'cityadmin.patient');
+// Route::view('patient', 'cityadmin.patient');
 // Route::post('submit', 'test@save');
 
 
@@ -394,3 +370,4 @@ Route::group(['prefix' => 'sec_reports', 'middleware' => 'auth:secretary'], func
 Route::get('/admin/patients', 'PatientController@index')->name('patient.index');
 
 Route::resource('patients', 'PatientController');
+

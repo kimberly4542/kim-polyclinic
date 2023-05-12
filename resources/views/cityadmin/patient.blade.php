@@ -104,6 +104,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="form3Example1">Civil Status</label>
                                     <select class="form-control" name="civil_status">
+                                        <option value="">Select</option>
                                         <option value="Single">Single</option>
                                         <option value="Married">Married</option>
                                         <option value="Divorced">Divorced</option>

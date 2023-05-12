@@ -217,11 +217,11 @@
                     filteredDiagnos.forEach((item) => {
                         let row = document.createElement("tr");
                         row.innerHTML = `
-          <td>${item.diagnos}</td>
-          <td>${calculateAge(item.birth_date)}</td>
-          <td>${item.address1}</td>
-          <td>${item.gender}</td>
-        `;
+                            <td>${item.diagnos}</td>
+                            <td>${calculateAge(item.birth_date)}</td>
+                            <td>${item.address1}</td>
+                            <td>${item.gender}</td>
+                            `;
                         tableBody.appendChild(row);
                     });
                 }
@@ -251,3 +251,5 @@
     </script>
 
 @endsection
+
+

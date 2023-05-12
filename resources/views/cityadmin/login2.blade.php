@@ -100,7 +100,7 @@
                         <div class="col-xs-4">
                             <center>
                                 <button id="btn" class="btn" type="submit"
-                                    style="background-color: rgb(255, 189, 89)"><a href="/cityadmin/dashboard"
+                                    style="background-color: rgb(255, 189, 89)"><a href={{ url('admin/dashboard') }}
                                         style="color: black ; padding: 130px;">Login </a></button>
                                 {{-- <a  href="{{ url('/') }}" id="btn-log-in" class="btn btn-primary waves-effect">Login</a> --}}
                             </center>
