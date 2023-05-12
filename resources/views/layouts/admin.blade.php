@@ -108,20 +108,19 @@
         @yield('content')
     </div>
 
-    @section('scripts')
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-        <script src="{{ URL::asset('AdminSB/plugins/jquery/jquery.min.js') }}"></script>
-        <!-- Bootstrap Core Js -->
-        {{-- <script src="{{ URL::asset('AdminSB/plugins/bootstrap/js/bootstrap.js') }}"></script> --}}
-        <!-- Waves Effect Plugin Js -->
-        <script src="{{ URL::asset('AdminSB/plugins/node-waves/waves.js') }}"></script>
-        <!-- Validation Plugin Js -->
-        <script src="{{ URL::asset('AdminSB/plugins/jquery-validation/jquery.validate.js') }}"></script>
-        <!-- Custom Js -->
-        <script src="{{ URL::asset('AdminSB/js/admin.js') }}"></script>
-        <script src="{{ URL::asset('AdminSB/js/pages/examples/sign-in.js') }}"></script>
-    @endsection
+    <script src="{{ URL::asset('AdminSB/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap Core Js -->
+    {{-- <script src="{{ URL::asset('AdminSB/plugins/bootstrap/js/bootstrap.js') }}"></script> --}}
+    <!-- Waves Effect Plugin Js -->
+    <script src="{{ URL::asset('AdminSB/plugins/node-waves/waves.js') }}"></script>
+    <!-- Validation Plugin Js -->
+    <script src="{{ URL::asset('AdminSB/plugins/jquery-validation/jquery.validate.js') }}"></script>
+    <!-- Custom Js -->
+    <script src="{{ URL::asset('AdminSB/js/admin.js') }}"></script>
+    <script src="{{ URL::asset('AdminSB/js/pages/examples/sign-in.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>

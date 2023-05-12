@@ -144,11 +144,10 @@
     </section>
 
     <!---------------------------------------------- FILTERS END ----------------------------------------------->
-
 @endsection
 
 
-@section('scripts')
+@push('scripts')
     <script>
         let tableBody = document.querySelector("#data-table tbody");
         let genderDropdown = document.querySelector("#gender");
@@ -233,7 +232,7 @@
                     var now = new Date();
                     var age = now.getFullYear() - birthDate.getFullYear();
                     if (now.getMonth() < birthDate.getMonth() || (now.getMonth() == birthDate.getMonth() && now
-                        .getDate() < birthDate.getDate())) {
+                            .getDate() < birthDate.getDate())) {
                         age--;
                     }
                     return age;
@@ -249,7 +248,4 @@
             print.style.display = 'block';
         };
     </script>
-
-@endsection
-
-
+@endpush
