@@ -3,6 +3,7 @@
 // use Illuminate\Routing\Route;
 
 use App\Http\Controllers\PatientController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/adminHome', 'Admin_Portal\HomeController@home')->name('adminHome');
@@ -370,4 +371,3 @@ Route::group(['prefix' => 'sec_reports', 'middleware' => 'auth:secretary'], func
 Route::get('/admin/patients', 'PatientController@index')->name('patient.index');
 
 Route::resource('patients', 'PatientController');
-

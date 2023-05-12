@@ -19,7 +19,7 @@
                                     <input type="text" name="fname" value="{{ old('fname') }}" id="form3Example1"
                                         class="form-control" />
                                     @if ($errors->has('fname'))
-                                        <span class="text-danger">{{ $errors->first('fname') }}</span>
+                                        <small class="text-danger">{{ $errors->first('fname') }}</small>
                                     @endif
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                                     <input type="text" name="mname" id="form3Example2" value="{{ old('mname') }}"
                                         class="form-control" />
                                     @if ($errors->has('mname'))
-                                        <span class="text-danger">{{ $errors->first('mname') }}</span>
+                                        <small class="text-danger">{{ $errors->first('mname') }}</small>
                                     @endif
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                     <input type="text" name="lname" id="form3Example1" value="{{ old('lname') }}"
                                         class="form-control" />
                                     @if ($errors->has('lname'))
-                                        <span class="text-danger">{{ $errors->first('lname') }}</span>
+                                        <small class="text-danger">{{ $errors->first('lname') }}</small>
                                     @endif
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                     <input type="date" name="birth_date" value="{{ old('birth_date') }}"
                                         class="date-picker form-control">
                                     @if ($errors->has('birth_date'))
-                                        <span class="text-danger">{{ $errors->first('birth_date') }}</span>
+                                        <small class="text-danger">{{ $errors->first('birth_date') }}</small>
                                     @endif
                                 </div>
 
@@ -97,7 +97,7 @@
                                         </option>
                                     </select>
                                     @if ($errors->has('gender'))
-                                        <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                        <small class="text-danger">{{ $errors->first('gender') }}</small>
                                     @endif
                                 </div>
 
@@ -120,7 +120,7 @@
                                             value="{{ old('contact_no') }}" class="form-control" />
 
                                         @if ($errors->has('contact_no'))
-                                            <span class="text-danger">{{ $errors->first('contact_no') }}</span>
+                                            <small class="text-danger">{{ $errors->first('contact_no') }}</small>
                                         @endif
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                                     <input type="text" name="address1" id="form3Example1"
                                         value="{{ old('address1') }}" class="form-control" />
                                     @if ($errors->has('address1'))
-                                        <span class="text-danger">{{ $errors->first('address1') }}</span>
+                                        <small class="text-danger">{{ $errors->first('address1') }}</small>
                                     @endif
                                 </div>
                                 <div class="form-group">
@@ -151,9 +151,8 @@
 
 
                         </div>
-                        <br>
                         {{-- <button type="submit" class="btn btn-dark btn-block mb-4" id="btn-submit">Add Patient</button> --}}
-                        <button type="submit" class="btn btn-warning form-control" id="btn-submit">Add
+                        <button type="submit" class="btn btn-primary form-control btn-lg" id="btn-submit">Add
                             Patient</button>
                     </form>
                 </div>
