@@ -295,9 +295,9 @@
             });
 
 
-        window.onload = function() {
-            var print = document.querySelector('button');
-            print.style.display = 'block';
-        };
+        // window.onload = function() {
+        //     var print = document.querySelector('button');
+        //     print.style.display = 'block';
+        // };
     </script>
 @endpush --}}
