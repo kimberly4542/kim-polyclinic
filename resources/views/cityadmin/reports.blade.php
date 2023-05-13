@@ -80,8 +80,10 @@
             </div>
 
             <div class="col-sm-1">
-                <button onclick="window.print()" class="btn btn-warning form-control" id="print" name="print"
-                    style="">Print</button>
+                {{-- <button onclick="window.print()" class="btn btn-warning form-control" id="print" name="print"
+                    style="">Print</button> --}}
+                <a href="{{ url('/generate-pdf') }}" class="btn btn-primary">Download PDF</a>
+
             </div>
 
         </div>
@@ -243,9 +245,9 @@
             });
 
 
-        window.onload = function() {
-            var print = document.querySelector('button');
-            print.style.display = 'block';
-        };
+        // window.onload = function() {
+        //     var print = document.querySelector('button');
+        //     print.style.display = 'block';
+        // };
     </script>
 @endpush

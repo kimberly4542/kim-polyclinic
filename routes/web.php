@@ -1,9 +1,11 @@
 <?php
 
 // use Illuminate\Routing\Route;
-
+use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/adminHome', 'Admin_Portal\HomeController@home')->name('adminHome');
@@ -266,7 +268,29 @@ Route::get('/diagnos', function () {
 		->get();
 
 	return response()->json($diagnos);
+	
 });
+
+Route::get('/generate-pdf', 'PDFController@generatePDF');
+
+// Route::post('/citylogin', function(){
+// 	echo "hey";
+// });
+
+Route::post('/citylogin', 'LoginController@login');
+
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/register', 'Auth\RegisterController@register');
+
+
+// Route::get('/admin/create', function (Request $request) {
+// 	$username = User::create([
+// 		'username' => $request->username,
+// 		'password' => Hash::$request->password 
+// 	]);
+// });
+
+
 // Route::post('/add-customer', 'CustomerController@addCustomer');
 
 // Route::post('/patient', 'PatientController@addPatient');
@@ -278,6 +302,8 @@ Route::get('/diagnos', function () {
 
 // Route::view('patient', 'cityadmin.patient');
 // Route::post('submit', 'test@save');
+
+Route::post('submit', 'test@save');
 
 
 // ----------------------------------- Secretary Portal Routes ---------------------------------------- //

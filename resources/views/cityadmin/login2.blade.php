@@ -75,9 +75,10 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" action="{{ url('admin_session/login/store') }}" method="POST">
-                    @csrf
-
+                {{-- <form id="sign_in" action="{{ url('admin_session/login/store') }}" method="POST"> --}}
+                    <form action="/citylogin" method="POST">
+                    {{-- @csrf --}}
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="msg">Log in to start the session</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -99,9 +100,13 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <center>
-                                <button id="btn" class="btn" type="submit"
+                                {{-- <button id="btn" class="btn" type="citySubmit"
                                     style="background-color: rgb(255, 189, 89)"><a href={{ url('admin/dashboard') }}
-                                        style="color: black ; padding: 130px;">Login </a></button>
+                                        style="color: black ; padding: 130px;">Login </a></button> --}}
+
+                                
+                                 <button class="btn form-control btn-lg" type="submit" name="citySubmit"
+                                    style="background-color: rgb(255, 189, 89); color: black;">Login</button>
                                 {{-- <a  href="{{ url('/') }}" id="btn-log-in" class="btn btn-primary waves-effect">Login</a> --}}
                             </center>
                         </div>
@@ -124,11 +129,11 @@
                             </div>
                         </div>
                     @endif
-                    <div class="row m-t-15 m-b--20">
+                    {{-- <div class="row m-t-15 m-b--20">
                         <div class="col-xs-6">
                             <a href="#register now"></a>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>
