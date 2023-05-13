@@ -1,0 +1,42 @@
+$primary: #379588;
+
+#reportsTable_wrapper {
+  .dataTables_length {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .dt-buttons {
+    display: none;
+  }
+
+  .dt-footer {
+    display: flex;
+    align-items: center;
+  }
+
+  .block {
+    display: block;
+
+    .dataTables_paginate {
+      float: right;
+    }
+  }
+}
+
+.page-item {
+  &.active {
+    .page-link {
+      background-color: $primary;
+      border-color: $primary;
+    }
+  }
+
+  .page-link {
+    color: $primary;
+  }
+}
+
+.dataTables_filter {
+  display: none;
+}

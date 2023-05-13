@@ -1,0 +1,39 @@
+#reportsTable_wrapper .dataTables_length {
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+#reportsTable_wrapper .dt-buttons {
+  display: none;
+}
+
+#reportsTable_wrapper .dt-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#reportsTable_wrapper .block {
+  display: block;
+}
+
+#reportsTable_wrapper .block .dataTables_paginate {
+  float: right;
+}
+
+.page-item.active .page-link {
+  background-color: #379588;
+  border-color: #379588;
+}
+
+.page-item .page-link {
+  color: #379588;
+}
+
+.dataTables_filter {
+  display: none;
+}
+

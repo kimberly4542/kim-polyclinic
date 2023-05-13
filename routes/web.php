@@ -3,6 +3,7 @@
 // use Illuminate\Routing\Route;
 
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -249,9 +250,9 @@ Route::get('/admin/dashboard', function () {
 	return view('cityadmin.dash');
 });
 
-Route::get('/admin/reports', function () {
-	return view('cityadmin.reports');
-});
+// Route::get('/admin/reports', function () {
+// 	return view('cityadmin.reports');
+// });
 
 Route::get('/admin/analytics', function () {
 	return view('cityadmin.stats');
@@ -366,8 +367,9 @@ Route::group(['prefix' => 'sec_reports', 'middleware' => 'auth:secretary'], func
 	Route::get('medical-data-locations', 'Secretary_Portal\ManageReport\MedicalDataController@getLocation');
 });
 
-// Route::get('/admin/patient', [PatientController::class, 'index'])->name('patient.index');
-
 Route::get('/admin/patients', 'PatientController@index')->name('patient.index');
 
 Route::resource('patients', 'PatientController');
+
+Route::get('/admin/reports', [ReportController::class, 'index'])->name('reports.index');
+Route::get('/diagnosis', [ReportController::class, 'getDiagnosis']);
