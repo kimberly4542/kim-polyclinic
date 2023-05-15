@@ -9,14 +9,18 @@ class User extends Authenticatable
 {
 	use Notifiable;
 
-	protected $table = 'user';
+	protected $table = 'cityadmin_user';
 	protected $primaryKey = 'id';
 	public $remember_token = false;
+
+	// protected $table = 'user';
+	// protected $primaryKey = 'id';
+	// public $remember_token = false;
 
 	//  The attributes that are mass assignable.
 
 	protected $fillable = [
-		'name', 'email', 'password',
+		'email', 'password',
 	];
 
 	//  The attributes that should be hidden for arrays.

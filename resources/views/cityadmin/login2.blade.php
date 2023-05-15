@@ -76,7 +76,7 @@
         <div class="card">
             <div class="body">
                 {{-- <form id="sign_in" action="{{ url('admin_session/login/store') }}" method="POST"> --}}
-                    <form action="/citylogin" method="POST">
+                    <form action="{{ route('login') }}" method="POST">
                     {{-- @csrf --}}
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="msg">Log in to start the session</div>
@@ -87,6 +87,9 @@
                         <div class="form-line">
                             <input type="text" class="form-control" name="username" placeholder="Username" required
                                 autofocus>
+                                 {{-- @error('username')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                 @enderror --}}
                         </div>
                     </div>
                     <div class="input-group">
@@ -95,23 +98,42 @@
                         </span>
                         <div class="form-line">
                             <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            {{-- @error('password')
+                                    <span class="text-red-500">{{ $message }}</span>
+                            @enderror --}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4">
+                        <div class="col-s-5">
                             <center>
                                 {{-- <button id="btn" class="btn" type="citySubmit"
                                     style="background-color: rgb(255, 189, 89)"><a href={{ url('admin/dashboard') }}
                                         style="color: black ; padding: 130px;">Login </a></button> --}}
 
                                 
-                                 <button class="btn form-control btn-lg" type="submit" name="citySubmit"
+                                 <button class="btn form-control btn-xl" type="submit" name="citySubmit"
                                     style="background-color: rgb(255, 189, 89); color: black;">Login</button>
                                 {{-- <a  href="{{ url('/') }}" id="btn-log-in" class="btn btn-primary waves-effect">Login</a> --}}
                             </center>
                         </div>
                     </div>
-                    @if (session('errorMessage'))
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <p>{{ $error }}</p>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+
+
+
+
+
+
+                    {{-- @if (session('errorMessage'))
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="alert bg-red">
@@ -128,7 +150,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                     {{-- <div class="row m-t-15 m-b--20">
                         <div class="col-xs-6">
                             <a href="#register now"></a>

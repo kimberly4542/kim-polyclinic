@@ -1,4 +1,4 @@
-let mix = require("laravel-mix")
+let mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -16,12 +16,13 @@ mix
   .sass("resources/assets/sass/app.scss", "public/css")
   .sass("resources/assets/sass/cityadmin.scss", "public/css")
   .version()
-  .sourceMaps()
+  .sourceMaps();
 
 mix.browserSync({
-  proxy: "127.0.0.1:8000",
-  port: 3006,
-})
+  proxy: "clinic.test",
+  // proxy: "127.0.0.1:8000",
+  // port: 3006,
+});
 
 // Full API
 // mix.js(src, output);

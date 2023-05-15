@@ -39,7 +39,8 @@
             <div class="col-md-3">
 
                 <div class="form-outline">
-                    <button class="btn btn-warning form-control" style="">Analyze</button>
+                    {{-- <button class="btn btn-warning form-control" style="">Analyze</button> --}}
+                    <button class="btn btn-primary" id="printButton" name="print">Analyze</button>
                 </div>
             </div>
         </div>

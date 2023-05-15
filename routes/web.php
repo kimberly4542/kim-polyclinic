@@ -272,16 +272,17 @@ Route::get('/diagnos', function () {
 	
 });
 
-Route::get('/generate-pdf', 'PDFController@generatePDF');
+// Route::get('/generate-pdf', 'PDFController@generatePDF');
 
 // Route::post('/citylogin', function(){
 // 	echo "hey";
 // });
 
-Route::post('/citylogin', 'LoginController@login');
+// Route::post('/citylogin', 'LoginController@login');
 
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\RegisterController@register');
+
 
 
 // Route::get('/admin/create', function (Request $request) {
@@ -294,7 +295,7 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 // Route::post('/add-customer', 'CustomerController@addCustomer');
 
-// Route::post('/patient', 'PatientController@addPatient');
+// Route::post('/patient', '<PatientCon></PatientCon>troller@addPatient');
 
 // Route::get('/cityadmin/patient', function () {
 // 	return view('cityadmin.patient');
@@ -304,7 +305,16 @@ Route::post('/register', 'Auth\RegisterController@register');
 // Route::view('patient', 'cityadmin.patient');
 // Route::post('submit', 'test@save');
 
-Route::post('submit', 'test@save');
+// Route::post('submit', 'test@save');
+
+//Login Form
+Route::get('/login', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'login']);
+
+//Logout Form
+Route::post('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+
+
 
 
 // ----------------------------------- Secretary Portal Routes ---------------------------------------- //

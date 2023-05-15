@@ -84,13 +84,23 @@
                         </li>
                     </ul>
 
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="fa fa-chevron-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="">Log</a></li>
-                        </ul>
+                   <div class="navbar-nav me-auto mb-2 mb-lg-0"> 
+                    {{-- fa fa-chevron-down  --}}
+                        <i class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                        {{-- <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Log out</a>
+                        </div> --}}
+                        <div class="dropdown-menu dropdown-menu-right">
+                         <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                        </a>
+                        </div>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                        </form>
                     </div>
-                </div>
 
             </div>
             <!-- Right elements -->
@@ -121,6 +131,13 @@
     <!-- Custom Js -->
     <script src="{{ URL::asset('AdminSB/js/admin.js') }}"></script>
     <script src="{{ URL::asset('AdminSB/js/pages/examples/sign-in.js') }}"></script>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+            integrity="sha384-JX9ChB0qlx1k2+pZndWW5ZrsFjzMNnAbD2QPHSWj+MH8a9kzrLrGrOrvMzW32+8h"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     @stack('scripts')
 </body>
 
