@@ -48,6 +48,12 @@ return [
 			'driver' => 'session',
 			'provider' => 'users',
 		],
+
+		'cityadmin' => [
+			'driver' => 'session',
+			'provider' => 'cityadmin_user',
+		],
+
 		// 'admin-api' => [
 		// 	'driver' => 'token',
 		// 	'provider' => 'users',
@@ -62,164 +68,164 @@ return [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			// sub1
-			'profile_doctors'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3
-				'profile_doctors_information_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_doctors_information_basicTableModal'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_doctors_information_singleImageUpload'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
+		// sub1
+		'profile_doctors'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3
+		'profile_doctors_information_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_doctors_information_basicTableModal'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_doctors_information_singleImageUpload'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 
-			// sub1
-			'profile_clinic'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3
-				'profile_clinic_information_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_clinic_information_modalImageUpload'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
+		// sub1
+		'profile_clinic'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3
+		'profile_clinic_information_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_clinic_information_modalImageUpload'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 
-			// sub1
-			'profile_patient'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3
-				'profile_patient_patientList_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_patient_patientList_contextual'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_patient_medicalHistory_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_patient_medicalHistory_hoverTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_patient_bills_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_patient_bills_hoverTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
+		// sub1
+		'profile_patient'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3
+		'profile_patient_patientList_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_patient_patientList_contextual'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_patient_medicalHistory_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_patient_medicalHistory_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_patient_bills_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_patient_bills_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 
-			// sub1
-			'profile_medicine'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3
-				'profile_medicine_information_basicTableModal'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'profile_medicine_information_basicTableImageUpload'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
+		// sub1
+		'profile_medicine'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3
+		'profile_medicine_information_basicTableModal'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'profile_medicine_information_basicTableImageUpload'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 		// main ------------------------------------------
 		'queuing'  => [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			// sub2
-			'queue_1st_priority'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3
-				'queue_1st_priority_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'queue_1st_priority_dragDrop'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-			// sub2
-			'queue_2nd_priority'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3
-				'queue_2nd_priority_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'queue_2nd_priority_dragDrop'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
+		// sub2
+		'queue_1st_priority'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3
+		'queue_1st_priority_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'queue_1st_priority_dragDrop'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub2
+		'queue_2nd_priority'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3
+		'queue_2nd_priority_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'queue_2nd_priority_dragDrop'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 		'schedule'  => [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			// sub2	
-			'schedule_patient'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3	
-				'schedule_patient_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'schedule_patient_hoverTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-			// sub2	
-			'schedule_clinic'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3	
-				'schedule_clinic_basicTable'  => [
-						'driver'  => 'session',
-						'provider' => 'subscribers',
-					],
-				'schedule_clinic_hoverTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
+		// sub2	
+		'schedule_patient'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3	
+		'schedule_patient_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'schedule_patient_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub2	
+		'schedule_clinic'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3	
+		'schedule_clinic_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'schedule_clinic_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
 
-				],
+		],
 		'booking'  => [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			// Sub3
-			'booking_hoverTable'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-			'booking_basicTable'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
+		// Sub3
+		'booking_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'booking_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 
 		'billing'  => [
 			'driver'  => 'session',
@@ -234,61 +240,61 @@ return [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			//sub1
-			'manageReport_patient'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				//sub3
-				'manageReport_patient_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'manageReport_patient_dataTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-			//sub1
-			'manageReport_inventory'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				//sub3
-				'manageReport_inventory_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'manageReport_inventory_dataTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-			//sub1
-			'manageReport_financial'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				//sub3
-				'manageReport_financial_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'manageReport_financial_dataTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
+		//sub1
+		'manageReport_patient'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub3
+		'manageReport_patient_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'manageReport_patient_dataTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub1
+		'manageReport_inventory'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub3
+		'manageReport_inventory_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'manageReport_inventory_dataTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub1
+		'manageReport_financial'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub3
+		'manageReport_financial_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'manageReport_financial_dataTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 
 		'settings'  => [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			'settings_basicTable'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-			'settings_dataTable'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
+		'settings_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'settings_dataTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 
 
 		// --------------------  Secretary --------------------  
@@ -301,162 +307,162 @@ return [
 			'driver'  => 'session',
 			'provider' => 'secretaries',
 		],
-			// sub1
-			'sec_profile_doctors'  => [
-				'driver'  => 'session',
-				'provider' => 'secretaries',
-			],
-				// sub3
-				'sec_profile_doctors_information_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_doctors_information_basicTableModal'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_doctors_information_singleImageUpload'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
+		// sub1
+		'sec_profile_doctors'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		// sub3
+		'sec_profile_doctors_information_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_doctors_information_basicTableModal'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_doctors_information_singleImageUpload'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
 
-			// sub1
-			'sec_profile_clinic'  => [
-				'driver'  => 'session',
-				'provider' => 'secretaries',
-			],
-				// sub3
-				'sec_profile_clinic_information_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_clinic_information_modalImageUpload'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
+		// sub1
+		'sec_profile_clinic'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		// sub3
+		'sec_profile_clinic_information_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_clinic_information_modalImageUpload'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
 
-			// sub1
-			'sec_profile_patient'  => [
-				'driver'  => 'session',
-				'provider' => 'secretaries',
-			],
-				// sub3
-				'sec_profile_patient_patientList_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_patient_patientList_contextual'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_patient_medicalHistory_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_patient_medicalHistory_hoverTable'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_patient_bills_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_patient_bills_hoverTable'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
+		// sub1
+		'sec_profile_patient'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		// sub3
+		'sec_profile_patient_patientList_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_patient_patientList_contextual'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_patient_medicalHistory_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_patient_medicalHistory_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_patient_bills_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_patient_bills_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
 
-			// sub1
-			'sec_profile_medicine'  => [
-				'driver'  => 'session',
-				'provider' => 'secretaries',
-			],
-				// sub3
-				'sec_profile_medicine_information_basicTableModal'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-				'sec_profile_medicine_information_basicTableImageUpload'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
+		// sub1
+		'sec_profile_medicine'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		// sub3
+		'sec_profile_medicine_information_basicTableModal'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_profile_medicine_information_basicTableImageUpload'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
 		'sec_queuing'  => [
 			'driver'  => 'session',
 			'provider' => 'secretaries',
 		],
-			// sub2
-				'sec_queue_1st_priority'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-					// sub3
-					'sec_queue_1st_priority_basicTable'  => [
-						'driver'  => 'session',
-						'provider' => 'secretaries',
-					],
-					'sec_queue_1st_priority_dragDrop'  => [
-						'driver'  => 'session',
-						'provider' => 'secretaries',
-					],
-				'sec_queue_2nd_priority'  => [
-					'driver'  => 'session',
-					'provider' => 'secretaries',
-				],
-					// sub3
-					'sec_queue_2nd_priority_basicTable'  => [
-							'driver'  => 'session',
-							'provider' => 'secretaries',
-						],
-					'sec_queue_2nd_priority_dragDrop'  => [
-						'driver'  => 'session',
-						'provider' => 'secretaries',
-					],
+		// sub2
+		'sec_queue_1st_priority'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		// sub3
+		'sec_queue_1st_priority_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_queue_1st_priority_dragDrop'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_queue_2nd_priority'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		// sub3
+		'sec_queue_2nd_priority_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
+		'sec_queue_2nd_priority_dragDrop'  => [
+			'driver'  => 'session',
+			'provider' => 'secretaries',
+		],
 		'sec_schedule'  => [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			// sub2	
-			'sec_schedule_patient'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3	
-				'sec_schedule_patient_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'sec_schedule_patient_hoverTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-			// sub2	
-			'sec_schedule_clinic'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				// sub3	
-				'sec_schedule_clinic_basicTable'  => [
-						'driver'  => 'session',
-						'provider' => 'subscribers',
-					],
-				'sec_schedule_clinic_hoverTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
+		// sub2	
+		'sec_schedule_patient'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3	
+		'sec_schedule_patient_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'sec_schedule_patient_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub2	
+		'sec_schedule_clinic'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		// sub3	
+		'sec_schedule_clinic_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'sec_schedule_clinic_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
 
-				],
+		],
 		'sec_booking'  => [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			// Sub3
-			'sec_booking_hoverTable'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-			'sec_booking_basicTable'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
+		// Sub3
+		'sec_booking_hoverTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'sec_booking_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 
 		'sec_billing'  => [
 			'driver'  => 'session',
@@ -471,61 +477,61 @@ return [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			//sub1
-			'sec_manageReport_patient'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				//sub3
-				'sec_manageReport_patient_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'sec_manageReport_patient_dataTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-			//sub1
-			'sec_manageReport_inventory'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				//sub3
-				'sec_manageReport_inventory_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'sec_manageReport_inventory_dataTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-			//sub1
-			'sec_manageReport_financial'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-				//sub3
-				'sec_manageReport_financial_basicTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
-				'sec_manageReport_financial_dataTable'  => [
-					'driver'  => 'session',
-					'provider' => 'subscribers',
-				],
+		//sub1
+		'sec_manageReport_patient'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub3
+		'sec_manageReport_patient_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'sec_manageReport_patient_dataTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub1
+		'sec_manageReport_inventory'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub3
+		'sec_manageReport_inventory_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'sec_manageReport_inventory_dataTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub1
+		'sec_manageReport_financial'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		//sub3
+		'sec_manageReport_financial_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'sec_manageReport_financial_dataTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 
 		'sec_settings'  => [
 			'driver'  => 'session',
 			'provider' => 'subscribers',
 		],
-			'sec_settings_basicTable'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
-			'sec_settings_dataTable'  => [
-				'driver'  => 'session',
-				'provider' => 'subscribers',
-			],
+		'sec_settings_basicTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
+		'sec_settings_dataTable'  => [
+			'driver'  => 'session',
+			'provider' => 'subscribers',
+		],
 	],
 
 	/*
@@ -553,8 +559,13 @@ return [
 		// ],
 
 		'users' => [
-		    'driver' => 'database',
-		    'table' => 'user',
+			'driver' => 'database',
+			'table' => 'user',
+		],
+
+		'cityadmin_user' => [
+			'driver' => 'eloquent',
+			'model' => App\CityAdmin::class,
 		],
 
 		'subscribers' => [
@@ -564,9 +575,9 @@ return [
 		],
 
 		'secretaries' => [
-		    'driver' => 'eloquent',
-		    'model'  => App\Models\Secretary_Portal\SecondaryUser::class,
-		    // 'table' => 'secondary_user',
+			'driver' => 'eloquent',
+			'model'  => App\Models\Secretary_Portal\SecondaryUser::class,
+			// 'table' => 'secondary_user',
 		],
 
 

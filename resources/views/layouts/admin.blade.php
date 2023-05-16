@@ -34,79 +34,60 @@
 
 <body class="container-fluid">
     @section('navbar')
-        <nav class="navbar navbar-expand-xl navbar-light fixed-top bg-light">
-            <!-- Container wrapper -->
-            <div class="container-fluid">
-                <!-- Toggle button -->
-                {{-- <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button> --}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <a class="navbar-brand" href="#">Polyclinic Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- Collapsible wrapper -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Navbar brand -->
-                    <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                        <small><strong>Polyclinic Management System</strong></small>
-                    </a>
-                    <!-- Left links -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}"
-                                href="{{ url('admin/dashboard') }}">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('admin/patients') ? 'active' : '' }}"
-                                href="{{ route('patient.index') }}">Patient</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('admin/analytics') ? 'active' : '' }}"
-                                href="{{ url('admin/analytics') }}">Analytics</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('admin/reports') ? 'active' : '' }}"
-                                href="{{ url('admin/reports') }}">Reports</a>
-                        </li>
-
-
-                    </ul>
-                    <!-- Left links -->
-                </div>
-                <!-- Collapsible wrapper -->
-
-                <!-- Right elements -->
-                <div class="d-flex align-items-center">
-                    <!-- Icon -->
-                    <ul class="navbar-nav ">
-                        <li class="nav-item"">
-                            <a class="nav-link" href="">City Admin</a>
-                        </li>
-                    </ul>
-
-                   <div class="navbar-nav me-auto mb-2 mb-lg-0"> 
-                    {{-- fa fa-chevron-down  --}}
-                        <i class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                        {{-- <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Log out</a>
-                        </div> --}}
-                        <div class="dropdown-menu dropdown-menu-right">
-                         <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}"
+                            href="{{ url('admin/dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('admin/patients') ? 'active' : '' }}"
+                            href="{{ route('patient.index') }}">Patient</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('admin/analytics') ? 'active' : '' }}"
+                            href="{{ url('admin/analytics') }}">Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('admin/reports') ? 'active' : '' }}"
+                            href="{{ url('admin/reports') }}">Reports</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <!-- Other menu items -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if (Auth::guard('cityadmin')->check())
+                                @php
+                                    // Capitalize username first letter
+                                    $username = ucfirst(Auth::guard('cityadmin')->user()->username);
+                                @endphp
+                                Hello {{ $username }}
+                            @endif
                         </a>
-                        </div>
-
-                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
-                        </form>
-                    </div>
-
+                            </form>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <!-- Right elements -->
-            </div>
-            <!-- Container wrapper -->
         </nav>
+
+
     @show
 
     <div class="container-fluid admin">
@@ -132,11 +113,11 @@
     <script src="{{ URL::asset('AdminSB/js/admin.js') }}"></script>
     <script src="{{ URL::asset('AdminSB/js/pages/examples/sign-in.js') }}"></script>
 
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-            integrity="sha384-JX9ChB0qlx1k2+pZndWW5ZrsFjzMNnAbD2QPHSWj+MH8a9kzrLrGrOrvMzW32+8h"
-            crossorigin="anonymous"></script>
+        integrity="sha384-JX9ChB0qlx1k2+pZndWW5ZrsFjzMNnAbD2QPHSWj+MH8a9kzrLrGrOrvMzW32+8h" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     @stack('scripts')
 </body>

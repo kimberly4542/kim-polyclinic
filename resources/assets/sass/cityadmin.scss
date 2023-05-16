@@ -1,4 +1,5 @@
 $primary: #379588;
+$white: #ffffff;
 
 #reportsTable_wrapper {
   .dataTables_length {
@@ -39,4 +40,37 @@ $primary: #379588;
 
 .dataTables_filter {
   display: none;
+}
+
+.login {
+  &-page {
+    background-image: linear-gradient(
+      135deg,
+      rgb(124, 204, 190) 0%,
+      rgb(37, 96, 89) 100%
+    );
+  }
+
+  &-logo {
+    text-align: center;
+    margin-top: 3rem;
+
+    a {
+      font-size: 1.4rem;
+      color: $white;
+    }
+
+    small {
+      font-size: 1rem;
+    }
+  }
+
+  &-form {
+    background-color: $white;
+    padding: 1rem;
+    margin-top: 1.8rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
 }

@@ -1,6 +1,8 @@
 <?php
 
 // use Illuminate\Routing\Route;
+
+use App\Http\Controllers\LoginController;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PatientController;
@@ -244,14 +246,6 @@ Route::get('/doctor_profile_copy', function () {
 
 // ----------------------------------- City Admin Portal Routes ---------------------------------------- //
 
-Route::get('/admin', function () {
-	return view('cityadmin.login2');
-});
-
-Route::get('/admin/dashboard', function () {
-	return view('cityadmin.dash');
-});
-
 // Route::get('/admin/reports', function () {
 // 	return view('cityadmin.reports');
 // });
@@ -269,7 +263,6 @@ Route::get('/diagnos', function () {
 		->get();
 
 	return response()->json($diagnos);
-	
 });
 
 // Route::get('/generate-pdf', 'PDFController@generatePDF');
@@ -306,15 +299,6 @@ Route::post('/register', 'Auth\RegisterController@register');
 // Route::post('submit', 'test@save');
 
 // Route::post('submit', 'test@save');
-
-//Login Form
-Route::get('/login', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [App\Http\Controllers\LoginController::class, 'login']);
-
-//Logout Form
-Route::post('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
-
-
 
 
 // ----------------------------------- Secretary Portal Routes ---------------------------------------- //
@@ -403,9 +387,23 @@ Route::group(['prefix' => 'sec_reports', 'middleware' => 'auth:secretary'], func
 	Route::get('medical-data-locations', 'Secretary_Portal\ManageReport\MedicalDataController@getLocation');
 });
 
-Route::get('/admin/patients', 'PatientController@index')->name('patient.index');
+// Cityadmin routes
 
-Route::resource('patients', 'PatientController');
+Route::get('/admin', function () {
+	return view('cityadmin.login2');
+});
 
-Route::get('/admin/reports', [ReportController::class, 'index'])->name('reports.index');
-Route::get('/diagnosis', [ReportController::class, 'getDiagnosis']);
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware(['cityadmin'])->group(function () {
+	// Define your authenticated routes here
+	Route::get('/admin/dashboard', function () {
+		return view('cityadmin.dash');
+	});
+	Route::get('/admin/patients', 'PatientController@index')->name('patient.index');
+	Route::resource('patients', 'PatientController');
+	Route::get('/admin/reports', [ReportController::class, 'index'])->name('reports.index');
+	Route::get('/diagnosis', [ReportController::class, 'getDiagnosis']);
+});

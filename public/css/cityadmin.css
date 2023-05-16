@@ -37,3 +37,30 @@
   display: none;
 }
 
+.login-page {
+  background-image: linear-gradient(135deg, #7cccbe 0%, #256059 100%);
+}
+
+.login-logo {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.login-logo a {
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.login-logo small {
+  font-size: 1rem;
+}
+
+.login-form {
+  background-color: #ffffff;
+  padding: 1rem;
+  margin-top: 1.8rem;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
