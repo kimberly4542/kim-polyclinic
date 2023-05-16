@@ -19,7 +19,7 @@
                 </div>
                 <div>
                     <div class="text-center" style="text-align: center; margin-bottom: -25px">
-                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">357</span>
+                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">{{ $dengueCount }}</span>
                     </div>
                     <p class="card-text"><small style="color: rgb(204, 151, 71)">Last updated 1 month
                             ago</small></p>
@@ -39,7 +39,7 @@
                 </div>
                 <div>
                     <div class="text-center" style="text-align: center; margin-bottom: -25px">
-                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">262</span>
+                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">{{ $malariaCount }}</span>
                     </div>
                     <p class="card-text"><small style="color: rgb(204, 151, 71)">Last updated 1 month
                             ago</small></p>
@@ -59,7 +59,7 @@
                 </div>
                 <div>
                     <div class="text-center" style="text-align: center; margin-bottom: -25px">
-                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">405</span>
+                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">{{ $diabetesCount }}</span>
                     </div>
                     <p class="card-text"><small style="color: rgb(204, 151, 71)">Last updated 1 month
                             ago</small></p>
@@ -79,7 +79,7 @@
                 </div>
                 <div>
                     <div class="text-center" style="text-align: center; margin-bottom: -25px">
-                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">378</span>
+                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">{{ $strokeCount }}</span>
                     </div>
                     <p class="card-text"><small style="color: rgb(204, 151, 71)">Last updated 1 month
                             ago</small></p>
@@ -755,5 +755,10 @@
             </div>
         </div>
     </div>
-
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endpush

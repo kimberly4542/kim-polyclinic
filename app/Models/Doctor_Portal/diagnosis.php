@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class diagnosis extends Model
 {
-    protected $table = 'diagnosis';
+	protected $table = 'diagnosis';
 	protected $primaryKey = 'diag_id';
 	public $remember_token = false;
 

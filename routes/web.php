@@ -2,6 +2,7 @@
 
 // use Illuminate\Routing\Route;
 
+use App\Diagnosis;
 use App\Http\Controllers\LoginController;
 use App\User;
 use Illuminate\Http\Request;
@@ -400,7 +401,11 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['cityadmin'])->group(function () {
 	// Define your authenticated routes here
 	Route::get('/admin/dashboard', function () {
-		return view('cityadmin.dash');
+		$dengueCount = Diagnosis::where('diagnos', 'Dengue')->count();
+		$malariaCount = Diagnosis::where('diagnos', 'Malaria')->count();
+		$diabetesCount = Diagnosis::where('diagnos', 'Diabetes')->count();
+		$strokeCount = Diagnosis::where('diagnos', 'Stroke')->count();
+		return view('cityadmin.dash')->with('dengueCount', $dengueCount)->with('malariaCount', $malariaCount)->with('diabetesCount', $diabetesCount)->with('strokeCount', $strokeCount);
 	});
 	Route::get('/admin/patients', 'PatientController@index')->name('patient.index');
 	Route::resource('patients', 'PatientController');
