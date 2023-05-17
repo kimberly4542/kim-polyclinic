@@ -407,8 +407,8 @@ Route::middleware(['cityadmin'])->group(function () {
 		$strokeCount = Diagnosis::where('diagnos', 'Stroke')->count();
 		return view('cityadmin.dash')->with('dengueCount', $dengueCount)->with('malariaCount', $malariaCount)->with('diabetesCount', $diabetesCount)->with('strokeCount', $strokeCount);
 	});
-	Route::get('/admin/patients', 'PatientController@index')->name('patient.index');
-	Route::resource('patients', 'PatientController');
+	Route::get('/admin/patients', 'CityAdminPatientController@index')->name('patient.index');
+	Route::resource('patients', 'CityAdminPatientController');
 	Route::get('/admin/reports', [ReportController::class, 'index'])->name('reports.index');
 	Route::get('/diagnosis', [ReportController::class, 'getDiagnosis']);
 });

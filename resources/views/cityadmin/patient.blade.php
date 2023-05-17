@@ -56,7 +56,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="">Birthdate</label>
-                                <input type="date" name="birth_date" value="{{ old('birth_date') }}"
+                                <input id="birthdate" name="birth_date" autocomplete="off" value="{{ old('birth_date') }}"
                                     class="date-picker form-control">
                                 @if ($errors->has('birth_date'))
                                     <small class="text-danger">{{ $errors->first('birth_date') }}</small>
@@ -90,9 +90,9 @@
                                 <label class="form-label" for="form3Example1">Gender</label>
                                 <select class="form-control" name="gender">
                                     <option value="">Select</option>
-                                    <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male
+                                    <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male
                                     </option>
-                                    <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female
+                                    <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female
                                     </option>
                                 </select>
                                 @if ($errors->has('gender'))
@@ -141,12 +141,28 @@
                                     <small class="text-danger">{{ $errors->first('address1') }}</small>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="form3Example1">Diagnosis</label>
-                                <input type="text" name="diagnos" id="form3Example1" class="form-control" />
-                            </div>
                         </div>
 
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label" for="form3Example1">Diagnosis</label>
+                                <input type="text" name="diagnosis" id="form3Example1"
+                                    value="{{ old('diagnosis') }}" class="form-control" />
+                                @if ($errors->has('diagnosis'))
+                                    <small class="text-danger">{{ $errors->first('diagnosis') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label" for="form3Example1">Date Diagnosed</label>
+                                <input id="diagnosed-date" autocomplete="off" name="diagnosed_date"
+                                    value="{{ old('diagnosed_date') }}" class="date-picker form-control">
+                                @if ($errors->has('diagnosed_date'))
+                                    <small class="text-danger">{{ $errors->first('diagnosed_date') }}</small>
+                                @endif
+                            </div>
+                        </div>
 
                     </div>
                     {{-- <button type="submit" class="btn btn-dark btn-block mb-4" id="btn-submit">Add Patient</button> --}}
@@ -158,3 +174,23 @@
     </section>
     <!---------------------------------------------- FORM END----------------------------------------------->
 @endsection
+
+@push('scripts')
+    <script>
+        $('#birthdate').datepicker({
+            dateFormat: "yy-mm-dd",
+            maxDate: 0, // Restrict selecting future dates
+            changeYear: true, // Display year dropdown
+            yearRange: "-100:+0", // Set the range of selectable years
+            changeMonth: true // Display month dropdown
+        });
+
+        $('#diagnosed-date').datepicker({
+            dateFormat: "yy-mm-dd",
+            maxDate: 0, // Restrict selecting future dates
+            changeYear: true, // Display year dropdown
+            yearRange: "-100:+0", // Set the range of selectable years
+            changeMonth: true // Display month dropdown
+        });
+    </script>
+@endpush

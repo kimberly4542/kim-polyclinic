@@ -20,8 +20,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- NEW ADDED -->
-    {{-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!--- jquer ui css --->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
     <!-- Waves Effect Css -->
     <link href="{{ URL::asset('AdminSB/plugins/node-waves/waves.css') }}" rel="stylesheet">
@@ -93,19 +99,17 @@
     <div class="container-fluid admin">
 
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
         @yield('content')
     </div>
 
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
     <script src="{{ URL::asset('AdminSB/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap Core Js -->
-    {{-- <script src="{{ URL::asset('AdminSB/plugins/bootstrap/js/bootstrap.js') }}"></script> --}}
-    <!-- Waves Effect Plugin Js -->
     <script src="{{ URL::asset('AdminSB/plugins/node-waves/waves.js') }}"></script>
     <!-- Validation Plugin Js -->
     <script src="{{ URL::asset('AdminSB/plugins/jquery-validation/jquery.validate.js') }}"></script>
@@ -114,11 +118,15 @@
     <script src="{{ URL::asset('AdminSB/js/pages/examples/sign-in.js') }}"></script>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
         integrity="sha384-JX9ChB0qlx1k2+pZndWW5ZrsFjzMNnAbD2QPHSWj+MH8a9kzrLrGrOrvMzW32+8h" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script>
+        $('.toast').toast('show')
+    </script>
     @stack('scripts')
 </body>
 
