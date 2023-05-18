@@ -49,6 +49,8 @@ $white: #ffffff;
       rgb(124, 204, 190) 0%,
       rgb(37, 96, 89) 100%
     );
+    background-attachment: fixed;
+    height: 100%;
   }
 
   &-logo {
