@@ -12,6 +12,7 @@ class CityAdminPatients extends Model
         'fname',
         'mname',
         'lname',
+        'suffix',
         'birth_date',
         'contact_no',
         'gender',

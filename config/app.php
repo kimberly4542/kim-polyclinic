@@ -124,7 +124,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        
+
 
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -150,6 +150,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        // Import export service provider
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -165,7 +168,7 @@ return [
 
 
         //new code
-        
+
     ],
 
     /*
@@ -215,7 +218,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         //new code
 
     ],
