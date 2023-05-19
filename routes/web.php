@@ -3,6 +3,7 @@
 // use Illuminate\Routing\Route;
 
 use App\Diagnosis;
+use App\Http\Controllers\CityAdminPatientController;
 use App\Http\Controllers\LoginController;
 use App\User;
 use Illuminate\Http\Request;
@@ -409,6 +410,7 @@ Route::middleware(['cityadmin'])->group(function () {
 	});
 	Route::get('/admin/patients', 'CityAdminPatientController@index')->name('patient.index');
 	Route::resource('patients', 'CityAdminPatientController');
+	Route::post('/admin/patients/import', [CityAdminPatientController::class, 'importCSV'])->name('patients.import');
 	Route::get('/admin/reports', [ReportController::class, 'index'])->name('reports.index');
 	Route::get('/diagnosis', [ReportController::class, 'getDiagnosis']);
 });

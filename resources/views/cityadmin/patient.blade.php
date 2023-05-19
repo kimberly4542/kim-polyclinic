@@ -4,9 +4,26 @@
 
 @section('content')
     <!---------------------------------------------- FORM ----------------------------------------------->
-    <section class="container">
+    <section>
         <div class="panel1">
             <div class="card col-lg-10">
+                <h6>Please select csv file to import</h6>
+                <form method="POST" action="{{ route('patients.import') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="file" name="csv_file" class="form-control-file" id="csv_file" accept=".csv">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary">Import</button>
+                        </div>
+                    </div>
+                </form>
+
+                <hr class="mb-4">
+                <h6>Or input a single patient</h6>
                 <form action="{{ route('patients.store') }}" method="POST">
                     @csrf
 
