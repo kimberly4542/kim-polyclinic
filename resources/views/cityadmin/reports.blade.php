@@ -16,32 +16,17 @@
                     <div class="col-md-2">
                         <select id="filterCases" class="form-control">
                             <option value="" selected>All cases</option>
-                            <option value="Dengue">Dengue</option>
-                            <option value="Diabetes">Diabetes</option>
-                            <option value="Malaria">Malaria</option>
+                            @foreach ($cases_options as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="col-md-2">
                         <select id="filterLocation" class="form-control">
-                            <option value="" selected>All location</option>
-                            <option value="Region 1">Region 1</option>
-                            <option value="Region 2">Region 2</option>
-                            <option value="Region 3">Region 3</option>
-                            <option value="Region 4">Region 4</option>
-                            <option value="Region 5">Region 5</option>
-                            <option value="Region 6">Region 6</option>
-                            <option value="Region 7">Region 7</option>
-                            <option value="Region 8">Region 8</option>
-                            <option value="Region 9">Region 9</option>
-                            <option value="Region 10">Region 10</option>
-                            <option value="Region 11">Region 11</option>
-                            <option value="Region 12">Region 12</option>
-                            <option value="Region 13">Region 13</option>
-                            <option value="Region 14">Region 14</option>
-                            <option value="Region 15">Region 15</option>
-                            <option value="Region 17">Region 17</option>
-                            <option value="Region 18">Region 18</option>
+                            @foreach ($address_options as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -82,7 +67,6 @@
     <script src="{{ URL::asset('AdminSB/plugins/jquery-datatable/skin/bootstrap4/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ URL::asset('AdminSB/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
     <script src="{{ URL::asset('AdminSB/js/pages/tables/jquery-datatable.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
@@ -124,6 +108,8 @@
 
                             if (!isNaN(age)) {
                                 return age;
+                            } else {
+                                return 'NAN'
                             }
                         }
 
