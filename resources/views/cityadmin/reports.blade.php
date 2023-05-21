@@ -24,6 +24,7 @@
 
                     <div class="col-md-2">
                         <select id="filterLocation" class="form-control">
+                            <option value="" selected>All location</option>
                             @foreach ($address_options as $option)
                                 <option value="{{ $option }}">{{ $option }}</option>
                             @endforeach
@@ -55,7 +56,6 @@
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
         <!-- End Table -->
     </div>
