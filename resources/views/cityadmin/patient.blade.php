@@ -202,6 +202,11 @@
                 var dropzoneInstance = this;
                 var successMessage = null;
 
+                this.on("addedfile", function(file) {
+                    // Reset success message when a new file is added
+                    successMessage = null;
+                });
+
                 this.on("success", function(file, response) {
                     // Handle success response after file upload
                     console.log('success');
@@ -224,12 +229,12 @@
                     }, 2000); // Adjust the delay as needed (in milliseconds)
                 });
 
-
                 this.on("error", function(file, response) {
                     // Handle error response after file upload
                 });
             }
         });
+
 
         $('#birthdate').datepicker({
             dateFormat: "yy-mm-dd",
