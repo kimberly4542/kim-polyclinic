@@ -14,15 +14,14 @@
                         <h5 class="card-title">Dengue Cases</h5>
                     </div>
                     <div>
-                        <span class="text-success font-14 font-weight-500">+30%</span>
+                        <span class="text-success font-14 font-weight-500">{{ $denguePercentage }}%</span>
                     </div>
                 </div>
                 <div>
                     <div class="text-center" style="text-align: center; margin-bottom: -25px">
-                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">{{ $dengueCount }}</span>
+                        <span class="d-block display-4 text-dark mb-5 count" style="font-weight: 400"
+                            data-value="{{ $dengueCount }}">{{ $dengueCount }}</span>
                     </div>
-                    <p class="card-text"><small style="color: rgb(204, 151, 71)">Last updated 1 month
-                            ago</small></p>
                 </div>
             </div>
         </div>
@@ -34,15 +33,14 @@
                         <h5 class="card-title">Malaria Cases</h5>
                     </div>
                     <div>
-                        <span class="text-success font-14 font-weight-500">+10%</span>
+                        <span class="text-success font-14 font-weight-500">{{ $malariaPercentage }}%</span>
                     </div>
                 </div>
                 <div>
                     <div class="text-center" style="text-align: center; margin-bottom: -25px">
-                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">{{ $malariaCount }}</span>
+                        <span class="d-block display-4 text-dark mb-5 count" style="font-weight: 400"
+                            data-value="{{ $malariaCount }}">{{ $malariaCount }}</span>
                     </div>
-                    <p class="card-text"><small style="color: rgb(204, 151, 71)">Last updated 1 month
-                            ago</small></p>
                 </div>
             </div>
         </div>
@@ -54,15 +52,14 @@
                         <h5 class="card-title">Diabetes Cases</h5>
                     </div>
                     <div>
-                        <span class="text-success font-14 font-weight-500">+20%</span>
+                        <span class="text-success font-14 font-weight-500">{{ $diabetesPercentage }}%</span>
                     </div>
                 </div>
                 <div>
                     <div class="text-center" style="text-align: center; margin-bottom: -25px">
-                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">{{ $diabetesCount }}</span>
+                        <span class="d-block display-4 text-dark mb-5 count" style="font-weight: 400"
+                            data-value="{{ $diabetesCount }}">{{ $diabetesCount }}</span>
                     </div>
-                    <p class="card-text"><small style="color: rgb(204, 151, 71)">Last updated 1 month
-                            ago</small></p>
                 </div>
             </div>
         </div>
@@ -74,15 +71,14 @@
                         <h5 class="card-title">Stroke Cases</h5>
                     </div>
                     <div>
-                        <span class="text-success font-14 font-weight-500">+50%</span>
+                        <span class="text-success font-14 font-weight-500">{{ $strokePercentage }}%</span>
                     </div>
                 </div>
                 <div>
                     <div class="text-center" style="text-align: center; margin-bottom: -25px">
-                        <span class="d-block display-4 text-dark mb-5" style="font-weight: 400">{{ $strokeCount }}</span>
+                        <span class="d-block display-4 text-dark mb-5 count" style="font-weight: 400"
+                            data-value="{{ $strokeCount }}">{{ $strokeCount }}</span>
                     </div>
-                    <p class="card-text"><small style="color: rgb(204, 151, 71)">Last updated 1 month
-                            ago</small></p>
                 </div>
             </div>
         </div>
@@ -99,6 +95,24 @@
                 <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead>
+                            <tr>
+                                <th>Disease</th>
+                                @foreach ($yearlyCounts as $year => $counts)
+                                    <th>{{ $year }}</th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($yearlyCounts['2019'] as $disease => $count)
+                                <tr>
+                                    <td>{{ $disease }}</td>
+                                    @foreach ($yearlyCounts as $year => $counts)
+                                        <td>{{ $counts[$disease] ?? 0 }}</td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        {{-- <thead>
                             <tr>
                                 <th>Name of Disease</th>
                                 <th>Chart</th>
@@ -749,7 +763,7 @@
                                         7,484</span> </td>
                                 <td>1,525</td>
                             </tr>
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
             </div>
@@ -761,4 +775,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
         integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $('.count').each(function() {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).data('value')
+            }, {
+                duration: 1000,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(this.Counter.toFixed(0));
+                }
+            });
+        });
+    </script>
 @endpush
