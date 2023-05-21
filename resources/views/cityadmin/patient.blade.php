@@ -8,17 +8,11 @@
         <div class="panel1">
             <div class="card col-lg-10">
                 <h6>Please select csv file to import</h6>
-                <form method="POST" action="{{ route('patients.import') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('patients.import') }}" class="dropzone" id="my-dropzone">
                     @csrf
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="file" name="csv_file" class="form-control-file" id="csv_file" accept=".csv">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary">Import</button>
-                        </div>
+                    <div class="dz-message" data-dz-message>
+                        <i class="fa fa-upload" aria-hidden="true"></i>
+                        <span>Drop your csv file or click to import</span>
                     </div>
                 </form>
 
@@ -193,7 +187,50 @@
 @endsection
 
 @push('scripts')
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
     <script>
+        // Dropzone
+        Dropzone.autoDiscover = false;
+        var myDropzone = new Dropzone("#my-dropzone", {
+            paramName: "csv_file", // Name of the file input field
+            acceptedFiles: ".csv", // Restrict accepted file types to CSV
+            maxFiles: 2, // Limit the number of files to be uploaded
+            createImageThumbnails: false,
+            disablePreviews: true,
+            init: function() {
+                var dropzoneInstance = this;
+                var successMessage = null;
+
+                this.on("success", function(file, response) {
+                    // Handle success response after file upload
+                    console.log('success');
+
+                    // Remove previous success message, if exists
+                    if (successMessage) {
+                        successMessage.parentNode.removeChild(successMessage);
+                    }
+
+                    // Display success message
+                    successMessage = document.createElement('div');
+                    successMessage.className = 'alert alert-success';
+                    successMessage.textContent = 'CSV file imported successfully.';
+                    document.getElementById('my-dropzone').appendChild(successMessage);
+
+                    // Refresh Dropzone after a delay
+                    setTimeout(function() {
+                        dropzoneInstance.removeAllFiles();
+                        successMessage.parentNode.removeChild(successMessage);
+                    }, 2000); // Adjust the delay as needed (in milliseconds)
+                });
+
+
+                this.on("error", function(file, response) {
+                    // Handle error response after file upload
+                });
+            }
+        });
+
         $('#birthdate').datepicker({
             dateFormat: "yy-mm-dd",
             maxDate: 0, // Restrict selecting future dates

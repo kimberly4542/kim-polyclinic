@@ -13,8 +13,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- Favicon-->
     <link rel="stylesheet" href="{{ URL::asset('AdminSB/favicon.ico') }}">
-    <!-- Bootstrap Core Css -->
-    {{-- <link href="{{ URL::asset('AdminSB/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet"> --}}
 
     <!---Fontawesome----->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,6 +23,9 @@
 
     <!--- jquer ui css --->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <!--- dropzone drag n drop --->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css">
 
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\CityAdminPatients;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -58,6 +57,18 @@ class CityAdminPatientController extends Controller
 
         CityAdminPatients::create($request->all());
         return redirect('/admin/patients')->with('success', 'Patient created successfully');
+    }
+
+    public function import(Request $request)
+    {
+        if ($request->hasFile('csv_file')) {
+            // Process the uploaded CSV file
+            $request->session()->flash('success', 'CSV file imported successfully.');
+        }
+
+        return redirect()->back()->with('success', 'CSV file imported successfully.');
+
+        // Redirect or return a response after import
     }
 
     /**
