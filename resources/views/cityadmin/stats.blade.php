@@ -4,6 +4,7 @@
 
 @section('content')
     <form method="POST" action="{{route('forecast')}}">
+    @csrf
         <div class="card5 col-lg-11 col-md-11 col-sm-11 col-xs-11">
             <div class="row">
 
@@ -25,9 +26,9 @@
                 <div class="col-md-2">
                     <select name="diagnosis" id="diagnosis" class="form-control" v-model="gender" @change="index">
                         <option value="" selected>Sickness</option>
-                        <option value="Dengue">Dengue</option>
-                        <option value="Diabetes">Diabetes</option>
-                        <option value="Diabetes">Malaria</option>
+                        <option value="dengue">Dengue</option>
+                        <option value="diabetes">Diabetes</option>
+                        <option value="malaria">Malaria</option>
                     </select>
                 </div>
                 
@@ -45,6 +46,12 @@
                         <button class="btn btn-primary" id="printButton" name="print" type="submit" >Analyze</button>
                     </div>
                 </div>
+
+                @if($hasImage)
+                <div>
+                    <img src="{{url('image/pic3.png')}}">
+                </div>
+                @endif
                 
                 
 
@@ -52,22 +59,23 @@
         </div>
     </form>
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+<!-- <?php
+// if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    if(isset($_POST['diagnosis'])){
-        $diagnosis = $_POST['diagnosis'];
-        $command = 'python G:\laragon\www\kim-polyclinic\python\newforecast.py'.$diagnosis;
-        exec($command);
+//     if(isset($_POST['diagnosis'])){
+//         $diagnosis = $_POST['diagnosis'];
+//         $command = 'python G:\laragon\www\kim-polyclinic\python\newforecast.py'.$diagnosis;
 
-        echo'<div class = "card-body">';
-        echo'<div class = "table-responsive">';
-        echo'<img src="G:\laragon\www\kim-polyclinic\python\pic.png" alt="Image">';
-        echo'</div>';
-        echo'</div>';
-    }
+//         exec($command);
 
-}
+//         echo'<div class = "card-body">';
+//         echo'<div class = "table-responsive">';
+//         echo'<img src="G:\laragon\www\kim-polyclinic\public\image\pic3.png" alt="Image">';
+//         echo'</div>';
+//         echo'</div>';
+//     }
 
-?>
+// }
+
+?> -->
 @endsection

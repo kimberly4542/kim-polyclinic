@@ -255,7 +255,9 @@ Route::get('/doctor_profile_copy', function () {
 // });
 
 Route::get('/admin/analytics', function () {
-	return view('cityadmin.stats');
+	$hasImage = false;
+	
+	return view('cityadmin.stats', compact('hasImage'));
 });
 
 
@@ -409,6 +411,8 @@ Route::middleware(['cityadmin'])->group(function () {
 	Route::post('/admin/patients/import', [CityAdminPatientController::class, 'importCSV'])->name('patients.import');
 	Route::get('/admin/reports', [ReportController::class, 'index'])->name('reports.index');
 	Route::get('/diagnosis', [ReportController::class, 'getDiagnosis']);
-	Route::post('/admin/analytics',[ForecastController::class])->name('forecast');
+	Route::post('/admin/analytics',[ForecastController::class,'forecast'])->name('forecast');
 
 });
+
+
