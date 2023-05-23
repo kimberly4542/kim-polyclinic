@@ -28,4 +28,6 @@ class Report extends Model
 
         return $diagnosis;
     }
+
+
 }

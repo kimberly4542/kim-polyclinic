@@ -37,6 +37,8 @@
     <!-- Custom Css -->
     <link href="{{ URL::asset('AdminSB/css/style2.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/cityadmin.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 
 <body class="container-fluid">
@@ -118,6 +120,7 @@
     <script src="{{ URL::asset('AdminSB/js/admin.js') }}"></script>
     <script src="{{ URL::asset('AdminSB/js/pages/examples/sign-in.js') }}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
