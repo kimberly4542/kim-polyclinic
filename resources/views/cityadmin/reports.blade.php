@@ -56,6 +56,8 @@
                     </table>
                 </div>
             </div>
+
+            
         </div>
         <!-- End Table -->
     </div>
@@ -69,7 +71,7 @@
     <script src="{{ URL::asset('AdminSB/js/pages/tables/jquery-datatable.js') }}"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
-
+    
 
     <script>
         function calculateAge(dateString) {
@@ -182,5 +184,10 @@
         }
 
         getReport();
+
+
+       
+       
+
     </script>
 @endpush

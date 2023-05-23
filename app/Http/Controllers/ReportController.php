@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Report;
+use App\CityAdminPatients;
+use App\Diagnosis;
 use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
@@ -25,10 +27,16 @@ class ReportController extends Controller
      *
      * @return void
      */
+
+
+
     public function getDiagnosis()
     {
         $diagnosis = Report::getDiagnosis();
 
         return response()->json($diagnosis);
     }
+
+  
+
 }
