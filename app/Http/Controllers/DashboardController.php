@@ -49,21 +49,20 @@ class DashboardController extends Controller
 
         // chart data by address
         $selectedDisease = $request->session()->get('selectedDisease', 'Dengue');
+        $chartDataAddress = $request->session()->get('chartDataAddress');
 
-        $chartDataAddress = Report::generatePieChartProvince();
+        // dd($chartDataAddress);
+
+        $chartDataAddress = Report::generatePieChartProvince($selectedDisease);
         $chartDataAddress = $chartDataAddress['chartDataAddress'];
 
         // chart data by age group
-        $chartDataAgeGroup = Report::generatePieChartAgeGroup();
+        $chartDataAgeGroup = Report::generatePieChartAgeGroup($selectedDisease);
         $chartDataAgeGroup = $chartDataAgeGroup['chartDataAgeGroup'];
 
         // chart data by gender
         $columnchartData = Report::generateColumnChartData();
         $columnchartData = $columnchartData['columnchartData'];
-
-        // sessions when dashboard refreshes
-        $selectedDisease = session('selectedDisease');
-        $chartDataAddress = session('chartDataAddress');
 
         return view('cityadmin.dash')
             ->with('dengueCount', $dengueCount)
@@ -114,13 +113,19 @@ class DashboardController extends Controller
     public function update(Request $request)
     {
         $disease = $request->input('disease');
+
         $chartDataAddress = Report::generatePieChartProvince($disease);
         $chartDataAddress = $chartDataAddress['chartDataAddress'];
 
+        $chartDataAgeGroup = Report::generatePieChartAgeGroup($disease);
+        $chartDataAgeGroup = $chartDataAgeGroup['chartDataAgeGroup'];
+
         // Store the selected disease value in the session
         $request->session()->put('selectedDisease', $disease);
+        $request->session()->put('chartDataAddress', $chartDataAddress);
+        $request->session()->put('chartDataAgeGroup', $chartDataAgeGroup);
 
         // Redirect back to the dashboard with the updated chart data
-        return redirect()->route('dashboard')->with('chartDataAddress', $chartDataAddress);
+        return redirect()->route('dashboard');
     }
 }

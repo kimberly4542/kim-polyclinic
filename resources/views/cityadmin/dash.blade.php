@@ -90,70 +90,80 @@
     <!---------------------------------------------- CHARTS OR STATS ----------------------------------------------->
     <div class="row">
         <div class="col-md-4">
+            <form method="POST" action="{{ route('dashboard.update') }}" class="mb-4">
+                @method('POST')
+                @csrf
+                <div class="input-group" style="align-items: center">
+                    <label for="disease" class="mr-2">Filter by disease</label>
+                    <select name="disease" id="disease" class="form-control">
+                        <option value="" selected>Select disease</option>
+                        <option value="Dengue" {{ $selectedDisease == 'Dengue' ? 'selected' : '' }}>Dengue</option>
+                        <option value="Stroke" {{ $selectedDisease == 'Stroke' ? 'selected' : '' }}>Stroke</option>
+                        <option value="Malaria" {{ $selectedDisease == 'Malaria' ? 'selected' : '' }}>Malaria</option>
+                        <option value="Diabetes" {{ $selectedDisease == 'Diabetes' ? 'selected' : '' }}>Diabetes
+                        </option>
+                    </select>
+                    <button type="submit" class="btn btn-primary ml-2">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
             <div class="card">
-                <form method="POST" action="{{ route('dashboard.update') }}" class="mb-2">
-                    @method('POST')
-                    @csrf
-                    <div class="input-group">
-                        <select name="disease" id="disease" class="form-control">
-                            <option value="Dengue" {{ $selectedDisease == 'Dengue' ? 'selected' : '' }}>Dengue</option>
-                            <option value="Stroke" {{ $selectedDisease == 'Stroke' ? 'selected' : '' }}>Stroke</option>
-                            <option value="Malaria" {{ $selectedDisease == 'Malaria' ? 'selected' : '' }}>Malaria</option>
-                            <option value="Diabetes" {{ $selectedDisease == 'Diabetes' ? 'selected' : '' }}>Diabetes
-                            </option>
-                        </select>
-                        <button type="submit" class="btn btn-primary ml-2">Update</button>
-                    </div>
-                </form>
-
                 <h6>{{ $selectedDisease }} Cases by Province</h6>
 
-                <div id="address-group" style="width: 400px; height: 300px"></div>
+                <div id="address-group" style="width: 500px; height: 300px"></div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
-                <h6>Dengue Cases by Age Group</h6>
-                <div id="age-group" style="width: 400px; height: 300px"></div>
+                <h6>{{ $selectedDisease }} Cases by Age Group</h6>
+                <div id="age-group" style="width: 500px; height: 300px"></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body pa-0 ma-0">
+                    <div class="table-wrap">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Disease</th>
+                                        @foreach ($yearlyCounts as $year => $counts)
+                                            <th>{{ $year }}</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($yearlyCounts['2019'] as $disease => $count)
+                                        <tr>
+                                            <td>{{ $disease }}</td>
+                                            @foreach ($yearlyCounts as $year => $counts)
+                                                <td>{{ $counts[$disease] ?? 0 }}</td>
+                                            @endforeach
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <h6>Cases by Gender</h6>
-                <div id="gender-group" style="width: 400px; height: 300px"></div>
+                <div id="gender-group" style="width: 400px;"></div>
             </div>
         </div>
     </div>
-    <br>
-    <div class="card3">
-        <div class="card-body pa-0 ma-0">
-            <div class="table-wrap">
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th>Disease</th>
-                                @foreach ($yearlyCounts as $year => $counts)
-                                    <th>{{ $year }}</th>
-                                @endforeach
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($yearlyCounts['2019'] as $disease => $count)
-                                <tr>
-                                    <td>{{ $disease }}</td>
-                                    @foreach ($yearlyCounts as $year => $counts)
-                                        <td>{{ $counts[$disease] ?? 0 }}</td>
-                                    @endforeach
-                                </tr>
-                            @endforeach
-                        </tbody>
 
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @push('scripts')
@@ -179,16 +189,18 @@
 
         function drawAddressGroup() {
             var chartwidth = $('#address-group').width();
+            console.log('chartwidth', chartwidth)
             var data = google.visualization.arrayToDataTable([
                 ['Province', 'Number of Cases'],
                 <?php echo $chartDataAddress; ?>
             ]);
 
             var options = {
-                width: chartwidth,
+                width: '100%',
                 height: 300,
                 chartArea: {
-                    width: chartwidth,
+                    width: '94%',
+                    height: '75%',
                 }
             };
 
@@ -205,10 +217,11 @@
             ]);
 
             var options = {
-                width: chartwidth,
+                width: '100%',
                 height: 300,
                 chartArea: {
-                    width: chartwidth,
+                    width: '94%',
+                    height: '75%',
                 }
             };
 

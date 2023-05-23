@@ -63,32 +63,7 @@ class Report extends Model
     }
 
 
-
-    // public static function generatePieChartProvince()
-    // {
-    //     $query = "
-    //         SELECT p.address1 AS province, COUNT(*) AS people_count
-    //         FROM patient p
-    //         JOIN consultation c ON p.patient_id = c.patient_id
-    //         JOIN diagnosis d ON c.consultation_id = d.consultation_id
-    //         WHERE d.diagnos = 'Dengue'
-    //         GROUP BY p.address1
-    //         UNION
-    //         SELECT cp.address1 AS province, COUNT(*) AS people_count
-    //         FROM cityadmin_patients cp
-    //         WHERE cp.diagnosis = 'Dengue'
-    //         GROUP BY cp.address1
-    //     ";
-
-    //     $result = DB::select(DB::raw($query));
-    //     $data = "";
-    //     foreach ($result as $val) {
-    //         $data .= "['" . $val->province . "', " . $val->people_count . "],";
-    //     }
-    //     return ['chartDataAddress' => $data];
-    // }
-
-    public static function generatePieChartAgeGroup()
+    public static function generatePieChartAgeGroup($disease = 'Dengue')
     {
         $query = "
             SELECT 
@@ -103,7 +78,7 @@ class Report extends Model
                 FROM patient p
                 JOIN consultation c ON p.patient_id = c.patient_id
                 JOIN diagnosis d ON c.consultation_id = d.consultation_id
-                WHERE d.diagnos = 'Dengue'
+                WHERE d.diagnos = :diagnosis
                 GROUP BY age_group
                 UNION
                 SELECT 
@@ -116,14 +91,18 @@ class Report extends Model
                     END AS age_group,
                     COUNT(*) AS people_count
                 FROM cityadmin_patients cp
-                WHERE cp.diagnosis = 'Dengue'
+                WHERE cp.diagnosis = :diagnosisp
                 GROUP BY age_group
             ";
 
-        $result = DB::select(DB::raw($query));
+        $bindings = ['diagnosis' => $disease, 'diagnosisp' => $disease];
+        $result = DB::select(DB::raw($query), $bindings);
         $data = "";
-        foreach ($result as $val) {
-            $data .= "['" . $val->age_group . "', " . $val->people_count . "],";
+
+        if (!empty($result)) {
+            foreach ($result as $val) {
+                $data .= "['" . $val->age_group . "', " . $val->people_count . "],";
+            }
         }
         return ['chartDataAgeGroup' => $data];
     }

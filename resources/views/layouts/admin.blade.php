@@ -99,7 +99,7 @@
 
     @show
 
-    <div class="container-fluid admin">
+    <div class="container-fluid admin mb-4">
 
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
