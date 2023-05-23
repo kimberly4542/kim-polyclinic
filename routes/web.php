@@ -5,6 +5,7 @@
 use App\Diagnosis;
 use App\Http\Controllers\CityAdminPatientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ForecastController;
 use App\Http\Controllers\LoginController;
 use App\User;
 use Illuminate\Http\Request;
@@ -408,4 +409,6 @@ Route::middleware(['cityadmin'])->group(function () {
 	Route::post('/admin/patients/import', [CityAdminPatientController::class, 'importCSV'])->name('patients.import');
 	Route::get('/admin/reports', [ReportController::class, 'index'])->name('reports.index');
 	Route::get('/diagnosis', [ReportController::class, 'getDiagnosis']);
+	Route::post('/admin/analytics',[ForecastController::class])->name('forecast');
+
 });
