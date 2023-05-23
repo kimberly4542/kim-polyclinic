@@ -82,12 +82,17 @@
                 </div>
             </div>
         </div>
-
     </div>
+    <br>
     <!---------------------------------------------- CARD DECK END ----------------------------------------------->
 
 
     <!---------------------------------------------- CHARTS OR STATS ----------------------------------------------->
+    <div class="row">
+        <div class="col-md-4">
+            <canvas id="age-group"></canvas>
+        </div>
+    </div>
     <br>
     <div class="card3">
         <div class="card-body pa-0 ma-0">
@@ -112,7 +117,7 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                      
+
                     </table>
                 </div>
             </div>
@@ -124,6 +129,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
         integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.js"></script>
+
 
     <script>
         $('.count').each(function() {
@@ -136,6 +143,39 @@
                     $(this).text(this.Counter.toFixed(0));
                 }
             });
+        });
+
+        var chartData = {!! json_encode($chartData) !!};
+
+        console.log('chartData', chartData)
+
+        var labels = chartData.map(function(item) {
+            return item.age;
+        });
+
+        var data = chartData.map(function(item) {
+            var percentage = Object.values(item.data).map(function(dataItem) {
+                return dataItem.percentage;
+            });
+
+            return percentage;
+        }).flat();
+
+        var backgroundColors = chartData.map(function(item) {
+            return Object.values(item.data).map(function(dataItem) {
+                return dataItem.color;
+            });
+        }).flat();
+
+        new Chart($('#age-group'), {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: backgroundColors,
+                }],
+            }
         });
     </script>
 @endpush

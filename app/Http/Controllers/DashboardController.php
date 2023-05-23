@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CityAdminPatients;
 use App\Diagnosis;
+use App\Report;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,6 +47,56 @@ class DashboardController extends Controller
             '2023' => $this->getYearlyCounts('2023'),
         ];
 
+        $diagnosisByAge = Report::getDiagnosis();
+
+        $ageGroups = $diagnosisByAge->groupBy(function ($item) {
+            $birthDate = Carbon::parse($item->birth_date);
+            $age = Carbon::now()->diffInYears($birthDate);
+
+            // Group by age range instead of exact age
+            if ($age <= 10) {
+                return '0-10';
+            } elseif ($age <= 20) {
+                return '11-20';
+            } elseif ($age <= 30) {
+                return '21-30';
+            } else {
+                return '31+';
+            }
+        });
+
+        $chartData = [];
+        $chartData = [];
+        $colours = [];
+
+        for ($i = 0; $i < count($ageGroups); $i++) {
+            $colours[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+        }
+
+        $disease = "Stroke";
+
+        foreach ($ageGroups as $ageRange => $data) {
+            $filteredData = $data->filter(function ($item) use ($disease) {
+                return $item->diagnosis == $disease;
+            });
+
+            $count = $filteredData->count();
+
+            $chartData[] = [
+                'age' => $ageRange,
+                'data' => $filteredData->map(function ($item, $index) use ($count, $colours) {
+                    $percentage = round((1 / $count) * 100, 2);
+                    $colorIndex = $index % count($colours);
+                    $color = $colours[$colorIndex];
+                    return [
+                        'diagnosis' => $item->diagnosis,
+                        'percentage' => $percentage,
+                        'color' => $color,
+                    ];
+                })->toArray(),
+            ];
+        }
+
         return view('cityadmin.dash')
             ->with('dengueCount', $dengueCount)
             ->with('malariaCount', $malariaCount)
@@ -54,7 +106,8 @@ class DashboardController extends Controller
             ->with('malariaPercentage', $malariaPercentage)
             ->with('diabetesPercentage', $diabetesPercentage)
             ->with('strokePercentage', $strokePercentage)
-            ->with('yearlyCounts', $yearlyCounts);
+            ->with('yearlyCounts', $yearlyCounts)
+            ->with('chartData', $chartData);
     }
 
     private function getYearlyCounts($year)
