@@ -90,7 +90,38 @@
     <!---------------------------------------------- CHARTS OR STATS ----------------------------------------------->
     <div class="row">
         <div class="col-md-4">
-            <canvas id="age-group"></canvas>
+            <div class="card">
+                <form method="POST" action="{{ route('dashboard.update') }}" class="mb-2">
+                    @method('POST')
+                    @csrf
+                    <div class="input-group">
+                        <select name="disease" id="disease" class="form-control">
+                            <option value="Dengue" {{ $selectedDisease == 'Dengue' ? 'selected' : '' }}>Dengue</option>
+                            <option value="Stroke" {{ $selectedDisease == 'Stroke' ? 'selected' : '' }}>Stroke</option>
+                            <option value="Malaria" {{ $selectedDisease == 'Malaria' ? 'selected' : '' }}>Malaria</option>
+                            <option value="Diabetes" {{ $selectedDisease == 'Diabetes' ? 'selected' : '' }}>Diabetes
+                            </option>
+                        </select>
+                        <button type="submit" class="btn btn-primary ml-2">Update</button>
+                    </div>
+                </form>
+
+                <h6>{{ $selectedDisease }} Cases by Province</h6>
+
+                <div id="address-group" style="width: 400px; height: 300px"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <h6>Dengue Cases by Age Group</h6>
+                <div id="age-group" style="width: 400px; height: 300px"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <h6>Cases by Gender</h6>
+                <div id="gender-group" style="width: 400px; height: 300px"></div>
+            </div>
         </div>
     </div>
     <br>
@@ -129,53 +160,78 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
         integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.js"></script>
-
-
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.js"></script> --}}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-        $('.count').each(function() {
-            $(this).prop('Counter', 0).animate({
-                Counter: $(this).data('value')
-            }, {
-                duration: 1000,
-                easing: 'swing',
-                step: function(now) {
-                    $(this).text(this.Counter.toFixed(0));
+        // Load Charts and the corechart package.
+        google.charts.load('current', {
+            'packages': ['corechart', 'bar']
+        });
+
+        // Draw pie chart for group by address dengue
+        google.charts.setOnLoadCallback(drawAddressGroup);
+
+        // Draw pie chart for age group dengue
+        google.charts.setOnLoadCallback(drawAgeGroup);
+
+        // Draw column chart for gender group
+        google.charts.setOnLoadCallback(drawGenderGroup);
+
+        function drawAddressGroup() {
+            var chartwidth = $('#address-group').width();
+            var data = google.visualization.arrayToDataTable([
+                ['Province', 'Number of Cases'],
+                <?php echo $chartDataAddress; ?>
+            ]);
+
+            var options = {
+                width: chartwidth,
+                height: 300,
+                chartArea: {
+                    width: chartwidth,
                 }
-            });
-        });
+            };
 
-        var chartData = {!! json_encode($chartData) !!};
 
-        console.log('chartData', chartData)
+            var chart = new google.visualization.PieChart(document.getElementById('address-group'));
+            chart.draw(data, options);
+        }
 
-        var labels = chartData.map(function(item) {
-            return item.age;
-        });
+        function drawAgeGroup() {
+            var chartwidth = $('#age-group').width();
+            var data = google.visualization.arrayToDataTable([
+                ['Province', 'Number of Cases'],
+                <?php echo $chartDataAgeGroup; ?>
+            ]);
 
-        var data = chartData.map(function(item) {
-            var percentage = Object.values(item.data).map(function(dataItem) {
-                return dataItem.percentage;
-            });
+            var options = {
+                width: chartwidth,
+                height: 300,
+                chartArea: {
+                    width: chartwidth,
+                }
+            };
 
-            return percentage;
-        }).flat();
 
-        var backgroundColors = chartData.map(function(item) {
-            return Object.values(item.data).map(function(dataItem) {
-                return dataItem.color;
-            });
-        }).flat();
+            var chart = new google.visualization.PieChart(document.getElementById('age-group'));
+            chart.draw(data, options);
+        }
 
-        new Chart($('#age-group'), {
-            type: 'pie',
-            data: {
-                labels: labels,
-                datasets: [{
-                    data: data,
-                    backgroundColor: backgroundColors,
-                }],
-            }
-        });
+        function drawGenderGroup() {
+            var chartwidth = $('#gender-group').width();
+            var data = google.visualization.arrayToDataTable([
+                <?php echo $columnchartData; ?>
+            ]);
+
+            var options = {
+                width: chartwidth,
+                height: 300,
+            };
+
+
+            var chart = new google.charts.Bar(document.getElementById('gender-group'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
     </script>
 @endpush

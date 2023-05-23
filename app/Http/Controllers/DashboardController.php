@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $diagnosisCounts = Diagnosis::select('diagnos as diagnosis', DB::raw('COUNT(*) as count'))
             ->groupBy('diagnos')
@@ -47,55 +47,23 @@ class DashboardController extends Controller
             '2023' => $this->getYearlyCounts('2023'),
         ];
 
-        $diagnosisByAge = Report::getDiagnosis();
+        // chart data by address
+        $selectedDisease = $request->session()->get('selectedDisease', 'Dengue');
 
-        $ageGroups = $diagnosisByAge->groupBy(function ($item) {
-            $birthDate = Carbon::parse($item->birth_date);
-            $age = Carbon::now()->diffInYears($birthDate);
+        $chartDataAddress = Report::generatePieChartProvince();
+        $chartDataAddress = $chartDataAddress['chartDataAddress'];
 
-            // Group by age range instead of exact age
-            if ($age <= 10) {
-                return '0-10';
-            } elseif ($age <= 20) {
-                return '11-20';
-            } elseif ($age <= 30) {
-                return '21-30';
-            } else {
-                return '31+';
-            }
-        });
+        // chart data by age group
+        $chartDataAgeGroup = Report::generatePieChartAgeGroup();
+        $chartDataAgeGroup = $chartDataAgeGroup['chartDataAgeGroup'];
 
-        $chartData = [];
-        $chartData = [];
-        $colours = [];
+        // chart data by gender
+        $columnchartData = Report::generateColumnChartData();
+        $columnchartData = $columnchartData['columnchartData'];
 
-        for ($i = 0; $i < count($ageGroups); $i++) {
-            $colours[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
-        }
-
-        $disease = "Stroke";
-
-        foreach ($ageGroups as $ageRange => $data) {
-            $filteredData = $data->filter(function ($item) use ($disease) {
-                return $item->diagnosis == $disease;
-            });
-
-            $count = $filteredData->count();
-
-            $chartData[] = [
-                'age' => $ageRange,
-                'data' => $filteredData->map(function ($item, $index) use ($count, $colours) {
-                    $percentage = round((1 / $count) * 100, 2);
-                    $colorIndex = $index % count($colours);
-                    $color = $colours[$colorIndex];
-                    return [
-                        'diagnosis' => $item->diagnosis,
-                        'percentage' => $percentage,
-                        'color' => $color,
-                    ];
-                })->toArray(),
-            ];
-        }
+        // sessions when dashboard refreshes
+        $selectedDisease = session('selectedDisease');
+        $chartDataAddress = session('chartDataAddress');
 
         return view('cityadmin.dash')
             ->with('dengueCount', $dengueCount)
@@ -107,7 +75,10 @@ class DashboardController extends Controller
             ->with('diabetesPercentage', $diabetesPercentage)
             ->with('strokePercentage', $strokePercentage)
             ->with('yearlyCounts', $yearlyCounts)
-            ->with('chartData', $chartData);
+            ->with('chartDataAddress', $chartDataAddress)
+            ->with('chartDataAgeGroup', $chartDataAgeGroup)
+            ->with('columnchartData', $columnchartData)
+            ->with('selectedDisease', $selectedDisease);
     }
 
     private function getYearlyCounts($year)
@@ -138,5 +109,18 @@ class DashboardController extends Controller
         }
 
         return $combinedCounts;
+    }
+
+    public function update(Request $request)
+    {
+        $disease = $request->input('disease');
+        $chartDataAddress = Report::generatePieChartProvince($disease);
+        $chartDataAddress = $chartDataAddress['chartDataAddress'];
+
+        // Store the selected disease value in the session
+        $request->session()->put('selectedDisease', $disease);
+
+        // Redirect back to the dashboard with the updated chart data
+        return redirect()->route('dashboard')->with('chartDataAddress', $chartDataAddress);
     }
 }
