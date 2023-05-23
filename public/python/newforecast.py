@@ -26,7 +26,7 @@ warnings.filterwarnings('ignore')
 
 def forecast(diagnosis):
     datadb = mysql.connector.connect(
-        host = "localhost",
+        host = "192.168.1.8",
         user = "homestead",
         port = 33060,
         password = "secret",
@@ -61,7 +61,9 @@ def forecast(diagnosis):
     test['total'].plot(legend = True)
 
     predictions.plot(legend = True)
-    plt.savefig('../public/pic.svg')
+    plt.savefig(f'pic_{diagnosis}.svg')
     return plt.savefig('pic.svg')
 
-forecast(sys.argv[1])
+
+if __name__ == '__main__':
+    forecast(sys.argv[1])
