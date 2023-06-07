@@ -35,29 +35,59 @@
 
                 {{-- <div class="col-md-3">
             <div class="form-outline">
-                <button class="btn btn-warning form-control" style="">Analyze</button>
+                <button class="btn btn-warning form-control" >Analyze</button>
             </div>
             </div> --}}
 
                 <div class="col-md-3">
 
                     <div class="form-outline">
-                        {{-- <button class="btn btn-warning form-control" style="">Analyze</button> --}}
+                        {{-- <button class="btn btn-warning form-control" >Analyze</button> --}}
                         <button class="btn btn-primary" id="printButton" name="print" type="submit" >Analyze</button>
                     </div>
                 </div>
+  
 
                 @if($hasImage)
-                <div>
-                    <img src="{{url('image/pic3.png')}}">
-                </div>
+                    <div><img src="{{url('image/pic3.png')}}"></div>
+                    
+    
                 @endif
                 
-                
+             
 
             </div>
         </div>
     </form>
+@isset($csvData)
+<table style="border-collapse: collapse; width: 100%; border: 1px solid #000;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #000; padding: 8px;">R2 Score</th>
+            <th style="border: 1px solid #000; padding: 8px;">Mean Absolute Error</th>
+            <th style="border: 1px solid #000; padding: 8px;">Mean Squared Error</th>
+            <th style="border: 1px solid #000; padding: 8px;">Root Mean Squared Error</th>
+            <th style="border: 1px solid #000; padding: 8px;">Mean Absolute Percentage Error</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($csvData as $index => $row)
+            @if($index === 1)
+        <tr>
+            <td style="border: 1px solid #000; padding: 8px;">{{$row[0]}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{$row[1]}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{$row[2]}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{$row[3]}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{$row[4]}}</td>
+        </tr>
+        @endif
+        @endforeach
+    </tbody>
+</table>
+@endisset
+
+
+
 
 <!-- <?php
 // if ($_SERVER['REQUEST_METHOD'] === 'POST'){

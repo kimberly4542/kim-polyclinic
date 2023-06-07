@@ -13,13 +13,19 @@ import pandas as pd
 import MySQLdb
 import pickle
 import os.path
+import statsmodels.api as sm
 
+from sklearn.metrics import mean_squared_error,r2_score,mean_absolute_error
+from sklearn.metrics import median_absolute_error,mean_squared_log_error
 from statsmodels.tsa.statespace.sarimax import SARIMAX
+from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf,plot_pacf
 from statsmodels.tsa.seasonal import seasonal_decompose
 from pmdarima import auto_arima
-
+import matplotlib
 from matplotlib import pyplot as plt
+
+plt.style.use('ggplot')
 
 import warnings
 # get_ipython().run_line_magic('matplotlib', 'inline')
@@ -86,12 +92,12 @@ predictions[:5]
 
 
 
-training['total']['2021-01-01':].plot(figsize= (12,8),legend =True)
+training['total'].plot(figsize= (12,8),legend =True)
 test['total'].plot(legend = True)
 predictions.plot(legend = True)
-#print(diagnosis)
+
 plt.savefig('G:\laragon\www\kim-polyclinic\public\image\pic3.png')
-    # return plt.savefig('G:\laragon\www\kim-polyclinic\public\image\pic2.png')
+
 
 
 

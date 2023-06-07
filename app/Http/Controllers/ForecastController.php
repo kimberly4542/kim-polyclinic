@@ -11,11 +11,7 @@ class ForecastController extends Controller
     {
         set_time_limit(300);
         $diagnosis = $request->input('diagnosis');
-        // $command = "python G:\laragon\www\kim-polyclinic\python\newforecast.py" . $diagnosis;
-        // $process = new Process($command);
-        // $process->run();
-        
-        // $output = $process->getOutput();
+    
         ob_start();
         passthru('G:\laragon\www\kim-polyclinic\python\env\Scripts\python.exe G:\laragon\www\kim-polyclinic\python\newforecast.py -d="' . $diagnosis . '"');
         $output = ob_get_clean();
@@ -23,9 +19,47 @@ class ForecastController extends Controller
         $data = trim($output);
         
         $hasImage = true;
-        return view('cityadmin.stats', compact('hasImage'));
+      
+        $csvfiles = [
+            'dengue' => 'G:\laragon\www\kim-polyclinic\public\image\evaluationdengue.csv',
+            'diabetes' => 'G:\laragon\www\kim-polyclinic\public\image\evaluationdiabetes.csv',
+            'malaria' => 'G:\laragon\www\kim-polyclinic\public\image\evaluationmalaria.csv'
+        ];
+
+        $selectedCSV = $csvfiles[$diagnosis];
+        if($diagnosis == 'dengue' && file_exists($selectedCSV)){
+            $file =fopen($selectedCSV,'r');
+            if($file){
+                while (($row = fgetcsv($file)) !== false){
+                    $csvData[] =$row;
+                }
+                fclose($file);
+            }
+        }
+        elseif($diagnosis == 'diabetes' && file_exists($selectedCSV)){
+            $file =fopen($selectedCSV,'r');
+            if($file){
+                while (($row = fgetcsv($file)) !== false){
+                    $csvData[] =$row;
+                }
+                fclose($file);
+            }
+        }
+        elseif($diagnosis == 'malaria' && file_exists($selectedCSV)){
+            $file =fopen($selectedCSV,'r');
+            if($file){
+                while (($row = fgetcsv($file)) !== false){
+                    $csvData[] =$row;
+                }
+                fclose($file);
+            }
+        }
+
         
-        // if(!$process->isSuccessful()){
+        
+        return view('cityadmin.stats',compact('hasImage','csvData'));
+        
+        
         //     throw new ProcessFailedException($process);
         // }
         // $output = $process->getOutput();

@@ -7,6 +7,7 @@ use App\Http\Controllers\CityAdminPatientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForecastController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ChartController;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PatientController;
@@ -405,7 +406,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['cityadmin'])->group(function () {
 	// Define your authenticated routes here
-	Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+	Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+	Route::post('/admin/dashboard/update', [DashboardController::class, 'update'])->name('dashboard.update');
 	Route::get('/admin/patients', 'CityAdminPatientController@index')->name('patient.index');
 	Route::resource('patients', 'CityAdminPatientController');
 	Route::post('/admin/patients/import', [CityAdminPatientController::class, 'importCSV'])->name('patients.import');

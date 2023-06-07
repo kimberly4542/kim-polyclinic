@@ -24,6 +24,7 @@
 
                     <div class="col-md-2">
                         <select id="filterLocation" class="form-control">
+                            <option value="" selected>All location</option>
                             @foreach ($address_options as $option)
                                 <option value="{{ $option }}">{{ $option }}</option>
                             @endforeach
@@ -55,7 +56,8 @@
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
+            
         </div>
         <!-- End Table -->
     </div>
@@ -69,7 +71,7 @@
     <script src="{{ URL::asset('AdminSB/js/pages/tables/jquery-datatable.js') }}"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
-
+    
 
     <script>
         function calculateAge(dateString) {
@@ -182,5 +184,10 @@
         }
 
         getReport();
+
+
+       
+       
+
     </script>
 @endpush

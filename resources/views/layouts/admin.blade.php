@@ -13,8 +13,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- Favicon-->
     <link rel="stylesheet" href="{{ URL::asset('AdminSB/favicon.ico') }}">
-    <!-- Bootstrap Core Css -->
-    {{-- <link href="{{ URL::asset('AdminSB/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet"> --}}
 
     <!---Fontawesome----->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,6 +24,9 @@
     <!--- jquer ui css --->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
+    <!--- dropzone drag n drop --->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css">
+
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
@@ -36,6 +37,8 @@
     <!-- Custom Css -->
     <link href="{{ URL::asset('AdminSB/css/style2.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/cityadmin.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 
 <body class="container-fluid">
@@ -96,7 +99,7 @@
 
     @show
 
-    <div class="container-fluid admin">
+    <div class="container-fluid admin mb-4">
 
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -117,6 +120,7 @@
     <script src="{{ URL::asset('AdminSB/js/admin.js') }}"></script>
     <script src="{{ URL::asset('AdminSB/js/pages/examples/sign-in.js') }}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
